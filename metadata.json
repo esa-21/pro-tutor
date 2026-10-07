@@ -1,0 +1,6 @@
+{
+  "name": "PRO TUTORIAL SERVICE",
+  "description": "Connecting students and families with qualified, dedicated, and competitive tutors across Addis Ababa and regional cities in Ethiopia for online and in-home academic excellence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
