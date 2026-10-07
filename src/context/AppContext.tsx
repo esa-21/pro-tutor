@@ -128,13 +128,43 @@ function saveToStorage<T>(key: string, value: T) {
   }
 }
 
+const getInitialRoute = (): string => {
+  if (typeof window !== 'undefined') {
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    const validRoutes = [
+      'about',
+      'services',
+      'find-tutor',
+      'pricing',
+      'how-it-works',
+      'testimonials',
+      'become-tutor',
+      'contact',
+      'faq',
+      'blog',
+      'learning-tips',
+      'careers',
+      'privacy',
+      'terms',
+      'refund',
+      'help',
+      'login',
+      'student-register',
+      'parent-register',
+      'tutor-register',
+      'dashboard',
+      'admin-dashboard',
+    ];
+    if (validRoutes.includes(path)) return path;
+  }
+  return loadFromStorage<string>('route', 'home');
+};
+
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() =>
     loadFromStorage<Language>('language', 'en')
   );
-  const [activeRoute, setActiveRouteState] = useState<string>(() =>
-    loadFromStorage<string>('route', 'home')
-  );
+  const [activeRoute, setActiveRouteState] = useState<string>(getInitialRoute);
   const [currentUser, setCurrentUser] = useState<User | null>(() =>
     loadFromStorage<User | null>('currentUser', INITIAL_USERS[0]) // Defaults to Admin for immediate exploration, easily switchable in 1 click
   );
@@ -193,9 +223,24 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   useEffect(() => saveToStorage('auditLogs', auditLogs), [auditLogs]);
   useEffect(() => saveToStorage('contactMessages', contactMessages), [contactMessages]);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
+      setActiveRouteState(path);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const setLanguage = (lang: Language) => setLanguageState(lang);
   const setActiveRoute = (route: string) => {
     setActiveRouteState(route);
+    if (typeof window !== 'undefined') {
+      const newPath = route === 'home' ? '/' : `/${route}`;
+      if (window.location.pathname !== newPath) {
+        window.history.pushState({}, '', newPath);
+      }
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

@@ -37,13 +37,30 @@ export const BecomeTutorPage: React.FC = () => {
               Start Online Application
             </button>
             <a
-              href="https://t.me/pro_tutorbot"
+              href="https://t.me/pro_tutorial21241"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors"
             >
               <Send className="w-4 h-4 text-[#06B6D4]" />
-              <span>Apply via Telegram Bot</span>
+              <span>Channel @pro_tutorial21241</span>
+            </a>
+            <a
+              href="https://t.me/pro_tutorial2124"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors"
+            >
+              <Send className="w-4 h-4 text-[#06B6D4]" />
+              <span>Group @pro_tutorial2124</span>
+            </a>
+            <a
+              href="https://t.me/pr_tutor12"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/15 text-blue-200 hover:text-white text-xs border border-white/15 transition-colors"
+            >
+              <span>Contact @pr_tutor12</span>
             </a>
           </div>
         </div>
@@ -60,18 +77,36 @@ export const BecomeTutorPage: React.FC = () => {
               Prefer applying through Telegram?
             </h4>
             <p className="text-xs text-slate-600">
-              Submit your tutor application directly through our Telegram application bot: <strong>@pro_tutorbot</strong>.
+              Join channel <strong>@pro_tutorial21241</strong>, discussion group <strong>@pro_tutorial2124</strong>, or message coordinator directly at <strong>@pr_tutor12</strong>.
             </p>
           </div>
         </div>
-        <a
-          href="https://t.me/pro_tutorbot"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-5 py-2.5 rounded-xl bg-[#0D3B66] text-white font-bold text-xs hover:bg-[#1E3A8A] transition-colors shrink-0"
-        >
-          Apply Through Telegram
-        </a>
+        <div className="flex flex-wrap items-center gap-2">
+          <a
+            href="https://t.me/pro_tutorial21241"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2.5 rounded-xl bg-[#0D3B66] text-white font-bold text-xs hover:bg-[#1E3A8A] transition-colors shrink-0"
+          >
+            Channel (@pro_tutorial21241)
+          </a>
+          <a
+            href="https://t.me/pro_tutorial2124"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2.5 rounded-xl bg-[#06B6D4] text-slate-950 font-bold text-xs hover:bg-[#0891b2] transition-colors shrink-0"
+          >
+            Group (@pro_tutorial2124)
+          </a>
+          <a
+            href="https://t.me/pr_tutor12"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2.5 rounded-xl bg-white text-[#0D3B66] border border-slate-300 font-bold text-xs hover:bg-slate-50 transition-colors shrink-0"
+          >
+            Message @pr_tutor12
+          </a>
+        </div>
       </div>
 
       {/* Benefits */}

@@ -94,17 +94,43 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Telegram quick option */}
-              <div className="pt-2 flex items-center justify-center lg:justify-start gap-2 text-xs text-blue-200/80">
-                <Send className="w-3.5 h-3.5 text-[#06B6D4]" />
-                <span>Prefer Telegram? Apply or request via </span>
-                <a
-                  href="https://t.me/pro_tutorbot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white font-bold underline hover:text-[#06B6D4]"
-                >
-                  @pro_tutorbot
-                </a>
+              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1 text-xs text-blue-200/80">
+                <span className="flex items-center gap-1.5">
+                  <Send className="w-3.5 h-3.5 text-[#06B6D4]" />
+                  <span>Channel: </span>
+                  <a
+                    href="https://t.me/pro_tutorial21241"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white font-bold underline hover:text-[#06B6D4]"
+                  >
+                    @pro_tutorial21241
+                  </a>
+                </span>
+                <span aria-hidden="true" className="text-blue-300">·</span>
+                <span>
+                  Group:{' '}
+                  <a
+                    href="https://t.me/pro_tutorial2124"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white font-bold underline hover:text-[#06B6D4]"
+                  >
+                    @pro_tutorial2124
+                  </a>
+                </span>
+                <span aria-hidden="true" className="text-blue-300">·</span>
+                <span>
+                  Direct Contact:{' '}
+                  <a
+                    href="https://t.me/pr_tutor12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white font-bold underline hover:text-[#06B6D4]"
+                  >
+                    @pr_tutor12
+                  </a>
+                </span>
               </div>
             </div>
 
@@ -411,7 +437,7 @@ export const HomePage: React.FC = () => {
               Submit your academic transcripts, complete agency verification, and earn competitive compensation while empowering the next generation.
             </p>
           </div>
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
             <button
               onClick={() => setActiveRoute('become-tutor')}
               className="px-5 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] rounded-xl transition-colors shadow-sm"
@@ -419,13 +445,22 @@ export const HomePage: React.FC = () => {
               Apply as a Tutor
             </button>
             <a
-              href="https://t.me/pro_tutorbot"
+              href="https://t.me/pro_tutorial21241"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 text-xs font-bold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-1.5"
+              className="px-3.5 py-2.5 text-xs font-bold text-[#0D3B66] bg-cyan-50 border border-cyan-200 rounded-xl hover:bg-cyan-100 transition-colors flex items-center gap-1.5"
             >
               <Send className="w-3.5 h-3.5 text-[#06B6D4]" />
-              <span>Telegram Bot</span>
+              <span>Channel</span>
+            </a>
+            <a
+              href="https://t.me/pro_tutorial2124"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-2.5 text-xs font-bold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-1.5"
+            >
+              <Send className="w-3.5 h-3.5 text-[#06B6D4]" />
+              <span>Group</span>
             </a>
           </div>
         </div>
@@ -551,7 +586,7 @@ export const HomePage: React.FC = () => {
                 onClick={() => setActiveRoute('contact')}
                 className="px-6 py-3 rounded-xl bg-white text-[#0D3B66] font-bold text-xs hover:bg-slate-100 transition-colors"
               >
-                Contact Us (0987226440)
+                Contact Us
               </button>
             </div>
           </div>

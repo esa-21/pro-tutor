@@ -18,7 +18,6 @@ export const INITIAL_USERS: User[] = [
     name: 'Esayas Hailu (Admin)',
     email: 'admin@protutorial.et',
     role: 'admin',
-    phone: '0987226440',
     city: 'Addis Ababa',
     subCity: 'Bole',
     createdAt: '2026-01-10',

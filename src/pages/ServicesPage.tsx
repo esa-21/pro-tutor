@@ -247,7 +247,7 @@ export const ServicesPage: React.FC = () => {
       <div className="text-center p-8 bg-[#0D3B66] rounded-3xl text-white space-y-4">
         <h3 className="text-xl font-bold">Have Questions About Which Program Fits Best?</h3>
         <p className="text-xs text-blue-200 max-w-lg mx-auto">
-          Our coordinators are ready to advise you on tutor availability in your neighborhood. Call <strong>0987226440</strong> or request a tutor directly.
+          Our coordinators are ready to advise you on tutor availability in your neighborhood. Contact us on Telegram channel <strong>@pro_tutorial21241</strong>, group <strong>@pro_tutorial2124</strong>, or request a tutor directly.
         </p>
         <button
           onClick={() => setRequestModalOpen(true)}

@@ -89,7 +89,7 @@ export const HowItWorksPage: React.FC = () => {
 
         <div className="pt-4 flex flex-wrap items-center justify-between gap-4">
           <p className="text-xs text-slate-500">
-            Need urgent assistance? Call our coordination team at <strong>0987226440</strong>.
+            Need urgent assistance? Connect with our team on Telegram at channel <strong>@pro_tutorial21241</strong>, group <strong>@pro_tutorial2124</strong>, or directly at <strong>@pr_tutor12</strong>.
           </p>
           <button
             onClick={() => setInteractiveFinderOpen(true)}

@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-[#0F172A] text-slate-300 border-t border-slate-800">
-      {/* Top Banner inside Footer: Telegram Bot callout */}
+      {/* Top Banner inside Footer: Telegram Community callout */}
       <div className="bg-[#0D3B66] border-b border-blue-900/60 py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -35,22 +35,40 @@ export const Footer: React.FC = () => {
             </div>
             <div>
               <p className="text-white font-bold text-sm sm:text-base">
-                Prefer applying or requesting via Telegram?
+                Join our Telegram Community &amp; Connect Directly
               </p>
               <p className="text-blue-200 text-xs">
-                Connect directly with our automated application and inquiry bot.
+                Channel: @pro_tutorial21241 · Group: @pro_tutorial2124 · Direct Contact: @pr_tutor12
               </p>
             </div>
           </div>
-          <a
-            href="https://t.me/pro_tutorbot"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#06B6D4] hover:bg-[#0891b2] text-[#0F172A] font-bold text-xs shadow-md transition-colors"
-          >
-            <span>Open @pro_tutorbot</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
+          <div className="flex flex-wrap items-center gap-2.5">
+            <a
+              href="https://t.me/pro_tutorial21241"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#06B6D4] hover:bg-[#0891b2] text-[#0F172A] font-bold text-xs shadow-md transition-colors"
+            >
+              <span>Channel @pro_tutorial21241</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://t.me/pro_tutorial2124"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/15 hover:bg-white/25 text-white font-bold text-xs border border-white/20 transition-colors"
+            >
+              <span>Group @pro_tutorial2124</span>
+            </a>
+            <a
+              href="https://t.me/pr_tutor12"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-blue-200 hover:text-white font-bold text-xs border border-white/15 transition-colors"
+            >
+              <span>Contact @pr_tutor12</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -81,12 +99,20 @@ export const Footer: React.FC = () => {
             {/* Direct Contacts */}
             <div className="space-y-2 pt-2 text-xs">
               <div className="flex items-center gap-2 text-slate-300">
-                <Phone className="w-4 h-4 text-[#06B6D4] shrink-0" />
-                <span>Direct Call / Support: <strong className="text-white">0987226440</strong></span>
+                <Send className="w-4 h-4 text-[#06B6D4] shrink-0" />
+                <span>Telegram Channel: <a href="https://t.me/pro_tutorial21241" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#06B6D4] font-semibold underline">@pro_tutorial21241</a></span>
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <Send className="w-4 h-4 text-[#06B6D4] shrink-0" />
-                <span>Telegram Bot: <strong className="text-white">@pro_tutorbot</strong></span>
+                <span>Telegram Group: <a href="https://t.me/pro_tutorial2124" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#06B6D4] font-semibold underline">@pro_tutorial2124</a></span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-300">
+                <Send className="w-4 h-4 text-[#06B6D4] shrink-0" />
+                <span>Direct Telegram Contact: <a href="https://t.me/pr_tutor12" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#06B6D4] font-semibold underline">@pr_tutor12</a></span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-300">
+                <Send className="w-4 h-4 text-[#06B6D4] shrink-0" />
+                <span>Application Bot: <a href="https://t.me/pro_tutorbot" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#06B6D4] font-semibold underline">@pro_tutorbot</a></span>
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <MapPin className="w-4 h-4 text-[#06B6D4] shrink-0" />

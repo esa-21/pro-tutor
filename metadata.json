@@ -1,6 +1,6 @@
 {
   "name": "PRO TUTORIAL SERVICE",
-  "description": "Connecting students and families with qualified, dedicated, and competitive tutors across Addis Ababa and regional cities in Ethiopia for online and in-home academic excellence.",
+  "description": "Pro Tutorial Service connects students and families with qualified tutors for KG to Grade 12 in Addis Ababa and regional cities of Ethiopia, offering in-home and online tutoring.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

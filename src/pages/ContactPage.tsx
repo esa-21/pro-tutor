@@ -62,46 +62,58 @@ export const ContactPage: React.FC = () => {
           </div>
 
           <div className="space-y-6 text-xs">
-            {/* Phone */}
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-                <Phone className="w-5 h-5 text-[#06B6D4]" />
-              </div>
-              <div>
-                <span className="text-blue-200 block text-[11px] uppercase tracking-wider font-semibold">
-                  Direct Telephone
-                </span>
-                <a
-                  href="tel:0987226440"
-                  className="text-lg font-bold text-white hover:text-[#06B6D4] transition-colors"
-                >
-                  0987226440
-                </a>
-                <p className="text-blue-300 text-[11px] mt-0.5">
-                  Available Mon–Sat: 8:00 AM – 7:00 PM (Ethiopian Local Time)
-                </p>
-              </div>
-            </div>
-
-            {/* Telegram */}
+            {/* Telegram Community */}
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
                 <Send className="w-5 h-5 text-[#06B6D4]" />
               </div>
-              <div>
+              <div className="space-y-1">
                 <span className="text-blue-200 block text-[11px] uppercase tracking-wider font-semibold">
-                  Official Telegram Bot
+                  Telegram Channels &amp; Community
                 </span>
-                <a
-                  href="https://t.me/pro_tutorbot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base font-bold text-[#06B6D4] underline hover:text-white transition-colors"
-                >
-                  @pro_tutorbot
-                </a>
-                <p className="text-blue-300 text-[11px] mt-0.5">
-                  Instant inquiries, bot applications & tutor requests
+                <p className="text-slate-200 text-xs">
+                  Official Channel:{' '}
+                  <a
+                    href="https://t.me/pro_tutorial21241"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#06B6D4] font-bold underline hover:text-white"
+                  >
+                    @pro_tutorial21241
+                  </a>
+                </p>
+                <p className="text-slate-200 text-xs">
+                  Telegram Group:{' '}
+                  <a
+                    href="https://t.me/pro_tutorial2124"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#06B6D4] font-bold underline hover:text-white"
+                  >
+                    @pro_tutorial2124
+                  </a>
+                </p>
+                <p className="text-slate-200 text-xs">
+                  Direct Contact:{' '}
+                  <a
+                    href="https://t.me/pr_tutor12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#06B6D4] font-bold underline hover:text-white"
+                  >
+                    @pr_tutor12
+                  </a>
+                </p>
+                <p className="text-slate-200 text-xs">
+                  Application Bot:{' '}
+                  <a
+                    href="https://t.me/pro_tutorbot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#06B6D4] font-bold underline hover:text-white"
+                  >
+                    @pro_tutorbot
+                  </a>
                 </p>
               </div>
             </div>
@@ -126,20 +138,30 @@ export const ContactPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="pt-4 border-t border-white/15 flex gap-3">
+          <div className="pt-4 border-t border-white/15 flex flex-wrap gap-2.5">
             <a
-              href="tel:0987226440"
-              className="flex-1 py-2.5 rounded-xl bg-white text-[#0D3B66] font-bold text-xs text-center hover:bg-blue-50 transition-colors"
-            >
-              Call 0987226440
-            </a>
-            <a
-              href="https://t.me/pro_tutorbot"
+              href="https://t.me/pro_tutorial21241"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-2.5 rounded-xl bg-[#06B6D4] text-slate-950 font-bold text-xs text-center hover:bg-[#0891b2] transition-colors"
+              className="flex-1 min-w-[130px] py-2.5 rounded-xl bg-[#06B6D4] text-slate-950 font-bold text-xs text-center hover:bg-[#0891b2] transition-colors"
             >
-              Telegram Bot
+              Channel (@pro_tutorial21241)
+            </a>
+            <a
+              href="https://t.me/pro_tutorial2124"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 min-w-[130px] py-2.5 rounded-xl bg-white/20 text-white font-bold text-xs text-center hover:bg-white/30 transition-colors"
+            >
+              Group (@pro_tutorial2124)
+            </a>
+            <a
+              href="https://t.me/pr_tutor12"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 min-w-[130px] py-2.5 rounded-xl bg-white/10 text-white border border-white/20 font-bold text-xs text-center hover:bg-white/20 transition-colors"
+            >
+              Direct Chat (@pr_tutor12)
             </a>
           </div>
         </div>

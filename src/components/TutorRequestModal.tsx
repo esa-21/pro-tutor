@@ -77,7 +77,7 @@ export const TutorRequestModal: React.FC = () => {
       requesterId: currentUser?.id || 'guest-' + Date.now(),
       requesterName: parentName || studentName,
       requesterEmail: email || 'family@protutorial.et',
-      requesterPhone: phone || '0987226440',
+      requesterPhone: phone || '',
       studentName,
       grade,
       subjects: selectedSubjects,
@@ -122,21 +122,30 @@ export const TutorRequestModal: React.FC = () => {
               <p><strong>Agency Starting Service Fee:</strong> {getEstimatedFee()} ETB</p>
             </div>
 
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-2.5">
               <button
                 onClick={handleClose}
-                className="w-full sm:w-auto px-6 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] rounded-xl transition-colors"
+                className="w-full sm:w-auto px-5 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] rounded-xl transition-colors"
               >
                 Done
               </button>
               <a
-                href="https://t.me/pro_tutorbot"
+                href="https://t.me/pro_tutorial21241"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 text-xs font-bold text-[#0D3B66] bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-bold text-[#0D3B66] bg-cyan-50 hover:bg-cyan-100 rounded-xl transition-colors border border-cyan-200"
               >
                 <Send className="w-3.5 h-3.5 text-[#06B6D4]" />
-                <span>Follow up on Telegram</span>
+                <span>Channel (@pro_tutorial21241)</span>
+              </a>
+              <a
+                href="https://t.me/pro_tutorial2124"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors border border-slate-200"
+              >
+                <Send className="w-3.5 h-3.5 text-[#06B6D4]" />
+                <span>Group (@pro_tutorial2124)</span>
               </a>
             </div>
           </div>

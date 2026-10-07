@@ -211,7 +211,7 @@ export const AboutPage: React.FC = () => {
       <div className="bg-[#0D3B66] rounded-3xl p-8 text-center text-white space-y-4">
         <h3 className="text-xl font-bold">Ready to Start Learning With Us?</h3>
         <p className="text-xs text-blue-200 max-w-md mx-auto">
-          Contact our team directly at <strong>0987226440</strong> or request a tutor through our interactive finder.
+          Connect with our team via Telegram channel <strong>@pro_tutorial21241</strong>, group <strong>@pro_tutorial2124</strong>, or request a tutor through our interactive finder.
         </p>
         <div className="pt-2 flex justify-center gap-3">
           <button

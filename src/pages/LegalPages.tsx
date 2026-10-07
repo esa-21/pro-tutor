@@ -75,7 +75,7 @@ export const LegalPages: React.FC<{ initialTab?: string }> = ({ initialTab = 'pr
               4. Data Inquiries & Deletion Requests
             </h3>
             <p>
-              Families and educators may contact our office at 0987226440 or support@protutorial.et at any time to request data updates, account suspension, or complete record deletion.
+              Families and educators may contact our office via Telegram at @pr_tutor12 or support@protutorial.et at any time to request data updates, account suspension, or complete record deletion.
             </p>
           </div>
         )}
@@ -157,13 +157,18 @@ export const LegalPages: React.FC<{ initialTab?: string }> = ({ initialTab = 'pr
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
               <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200">
-                <Phone className="w-5 h-5 text-[#0D3B66] mb-2" />
-                <h4 className="text-sm font-bold text-slate-900">Direct Phone Support</h4>
+                <Send className="w-5 h-5 text-[#0D3B66] mb-2" />
+                <h4 className="text-sm font-bold text-slate-900">Direct Telegram Support</h4>
                 <p className="text-xs text-slate-600 mt-1">
-                  Call our Addis Ababa coordination desk directly:
+                  Connect with our Addis Ababa coordination team:
                 </p>
-                <a href="tel:0987226440" className="text-sm font-extrabold text-[#0D3B66] mt-2 block">
-                  0987226440
+                <a
+                  href="https://t.me/pr_tutor12"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-extrabold text-[#0D3B66] mt-2 block hover:underline"
+                >
+                  @pr_tutor12
                 </a>
               </div>
 

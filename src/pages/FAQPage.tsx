@@ -53,8 +53,8 @@ const FAQS: FAQItem[] = [
   },
   {
     cat: 'tutors',
-    q: 'Can I apply through Telegram?',
-    a: 'Yes! You can apply directly through our official Telegram application bot at https://t.me/pro_tutorbot.',
+    q: 'Can I apply or connect through Telegram?',
+    a: 'Yes! You can join our official Telegram channel at https://t.me/pro_tutorial21241 (@pro_tutorial21241), join our discussion group at https://t.me/pro_tutorial2124 (@pro_tutorial2124), message our coordinator directly at https://t.me/pr_tutor12 (@pr_tutor12), or apply through our bot at https://t.me/pro_tutorbot.',
   },
 ];
 
@@ -127,7 +127,7 @@ export const FAQPage: React.FC = () => {
       <div className="space-y-3">
         {filteredFAQs.length === 0 ? (
           <div className="p-8 text-center bg-white rounded-2xl border border-slate-200 text-xs text-slate-500">
-            No specific FAQ matches your query. Contact our coordinator directly at 0987226440.
+            No specific FAQ matches your query. Contact our coordinator directly on Telegram at @pr_tutor12, or visit our channel @pro_tutorial21241 and group @pro_tutorial2124.
           </div>
         ) : (
           filteredFAQs.map((item, idx) => {
@@ -170,16 +170,26 @@ export const FAQPage: React.FC = () => {
             Our support team in Addis Ababa is standing by to help.
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2">
           <a
-            href="tel:0987226440"
-            className="px-4 py-2 text-xs font-bold text-white bg-[#0D3B66] rounded-xl hover:bg-[#1E3A8A] transition-colors"
+            href="https://t.me/pro_tutorial21241"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3.5 py-2 text-xs font-bold text-white bg-[#0D3B66] rounded-xl hover:bg-[#1E3A8A] transition-colors"
           >
-            Call 0987226440
+            Channel (@pro_tutorial21241)
+          </a>
+          <a
+            href="https://t.me/pro_tutorial2124"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3.5 py-2 text-xs font-bold text-slate-800 bg-[#06B6D4] rounded-xl hover:bg-[#0891b2] transition-colors"
+          >
+            Group (@pro_tutorial2124)
           </a>
           <button
             onClick={() => setActiveRoute('contact')}
-            className="px-4 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors"
+            className="px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors"
           >
             Send Inquiry
           </button>
