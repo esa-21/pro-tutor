@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: Sitemap: https://pro-tutor-virid.vercel.app/sitemap.xml
+Sitemap: https://pro-tutor-virid.vercel.app/sitemap.xml

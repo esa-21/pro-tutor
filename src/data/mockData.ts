@@ -15,7 +15,7 @@ import {
 export const INITIAL_USERS: User[] = [
   {
     id: 'user-admin-1',
-    name: 'Esayas Hailu (Admin)',
+    name: 'PRO TUTORIAL',
     email: 'admin@protutorial.et',
     role: 'admin',
     city: 'Addis Ababa',
@@ -607,7 +607,7 @@ export const INITIAL_NOTIFICATIONS: SiteNotification[] = [
 export const INITIAL_AUDIT_LOGS: AuditLog[] = [
   {
     id: 'log-1',
-    adminName: 'Esayas Hailu',
+    adminName: 'PRO TUTORIAL',
     adminEmail: 'admin@protutorial.et',
     action: 'APPROVED_TUTOR',
     targetType: 'tutor',
@@ -617,7 +617,7 @@ export const INITIAL_AUDIT_LOGS: AuditLog[] = [
   },
   {
     id: 'log-2',
-    adminName: 'Esayas Hailu',
+    adminName: 'PRO TUTORIAL',
     adminEmail: 'admin@protutorial.et',
     action: 'PROPOSED_MATCH',
     targetType: 'request',
@@ -627,7 +627,7 @@ export const INITIAL_AUDIT_LOGS: AuditLog[] = [
   },
   {
     id: 'log-3',
-    adminName: 'Esayas Hailu',
+    adminName: 'PRO TUTORIAL',
     adminEmail: 'admin@protutorial.et',
     action: 'CONFIRMED_MATCH',
     targetType: 'request',

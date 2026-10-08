@@ -173,9 +173,9 @@ export const AboutPage: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
-              name: 'Esayas Hailu',
-              role: 'Founder & Program Director',
-              bio: 'Educational technologist dedicated to scaling accessible, top-quality tutoring across Ethiopian cities.',
+              name: 'PRO TUTORIAL',
+              role: 'Academic Director & Leadership',
+              bio: 'Dedicated academic management team scaling accessible, top-quality tutoring across Ethiopian cities.',
             },
             {
               name: 'Dr. Tadesse Bekele',

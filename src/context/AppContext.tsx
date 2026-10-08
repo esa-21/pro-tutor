@@ -165,13 +165,22 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     loadFromStorage<Language>('language', 'en')
   );
   const [activeRoute, setActiveRouteState] = useState<string>(getInitialRoute);
-  const [currentUser, setCurrentUser] = useState<User | null>(() =>
-    loadFromStorage<User | null>('currentUser', INITIAL_USERS[0]) // Defaults to Admin for immediate exploration, easily switchable in 1 click
-  );
+  const [currentUser, setCurrentUser] = useState<User | null>(() => {
+    const loaded = loadFromStorage<User | null>('currentUser', INITIAL_USERS[0]);
+    if (loaded && loaded.role === 'admin' && (loaded.name.includes('Esayas') || loaded.name.includes('Hailu'))) {
+      return { ...loaded, name: 'PRO TUTORIAL' };
+    }
+    return loaded;
+  });
 
-  const [users, setUsers] = useState<User[]>(() =>
-    loadFromStorage<User[]>('users', INITIAL_USERS)
-  );
+  const [users, setUsers] = useState<User[]>(() => {
+    const loaded = loadFromStorage<User[]>('users', INITIAL_USERS);
+    return loaded.map((u) =>
+      u.role === 'admin' && (u.name.includes('Esayas') || u.name.includes('Hailu'))
+        ? { ...u, name: 'PRO TUTORIAL' }
+        : u
+    );
+  });
   const [tutors, setTutors] = useState<TutorProfile[]>(() =>
     loadFromStorage<TutorProfile[]>('tutors', INITIAL_TUTORS)
   );
@@ -196,9 +205,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [pricingTiers, setPricingTiers] = useState<PricingTier[]>(() =>
     loadFromStorage<PricingTier[]>('pricingTiers', INITIAL_PRICING_TIERS)
   );
-  const [auditLogs, setAuditLogs] = useState<AuditLog[]>(() =>
-    loadFromStorage<AuditLog[]>('auditLogs', INITIAL_AUDIT_LOGS)
-  );
+  const [auditLogs, setAuditLogs] = useState<AuditLog[]>(() => {
+    const loaded = loadFromStorage<AuditLog[]>('auditLogs', INITIAL_AUDIT_LOGS);
+    return loaded.map((l) =>
+      l.adminName.includes('Esayas') || l.adminName.includes('Hailu')
+        ? { ...l, adminName: 'PRO TUTORIAL' }
+        : l
+    );
+  });
   const [contactMessages, setContactMessages] = useState<ContactMessage[]>(() =>
     loadFromStorage<ContactMessage[]>('contactMessages', INITIAL_CONTACT_MESSAGES)
   );
