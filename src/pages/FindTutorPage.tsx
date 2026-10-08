@@ -79,13 +79,13 @@ export const FindTutorPage: React.FC = () => {
       {/* Title & Discovery Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-200">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
             Tutor Marketplace
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#1F2937] tracking-tight mt-1">
             Find Qualified Tutors in Ethiopia
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1">
+          <p className="text-xs sm:text-sm text-[#64748B] mt-1">
             Browse verified educators from Addis Ababa University, AASTU, and recognized teachers.
           </p>
         </div>
@@ -93,14 +93,14 @@ export const FindTutorPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setInteractiveFinderOpen(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#06B6D4] hover:bg-[#0891b2] text-slate-950 font-bold text-xs shadow-sm transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-50 text-[#0D3B66] border border-blue-200 hover:bg-blue-100 font-bold text-xs shadow-xs transition-colors cursor-pointer"
           >
-            <Compass className="w-4 h-4 text-slate-950" />
+            <Compass className="w-4 h-4 text-[#2563EB]" />
             <span>Interactive 5-Step Finder</span>
           </button>
           <button
             onClick={() => setRequestModalOpen(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0D3B66] hover:bg-[#1E3A8A] text-white font-bold text-xs shadow-sm transition-colors"
+            className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl bg-[#F25C54] hover:bg-[#e04a42] text-white font-bold text-xs shadow-md shadow-[#F25C54]/20 transition-colors cursor-pointer"
           >
             <span>Request a Custom Tutor</span>
           </button>

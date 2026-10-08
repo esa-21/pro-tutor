@@ -328,7 +328,7 @@ export const InteractiveTutorFinder: React.FC = () => {
           {step < 5 ? (
             <button
               onClick={() => setStep(step + 1)}
-              className="inline-flex items-center gap-1.5 px-6 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] rounded-xl shadow-md transition-all"
+              className="inline-flex items-center gap-1.5 px-6 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#2563EB] rounded-xl shadow-md transition-all cursor-pointer"
             >
               <span>Next Step</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -336,10 +336,10 @@ export const InteractiveTutorFinder: React.FC = () => {
           ) : (
             <button
               onClick={handleFinishAndRequest}
-              className="inline-flex items-center gap-1.5 px-6 py-2.5 text-xs font-bold text-white bg-[#06B6D4] hover:bg-[#0891b2] text-slate-900 rounded-xl shadow-md transition-all"
+              className="inline-flex items-center gap-1.5 px-6 py-2.5 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl shadow-md shadow-[#F25C54]/25 transition-all cursor-pointer"
             >
-              <Sparkles className="w-4 h-4 text-slate-900" />
-              <span className="text-slate-900">Submit Tutoring Request</span>
+              <Sparkles className="w-4 h-4 text-[#F4B400]" />
+              <span>Submit Tutoring Request</span>
             </button>
           )}
         </div>

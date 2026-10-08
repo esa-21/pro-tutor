@@ -93,7 +93,7 @@ export const HowItWorksPage: React.FC = () => {
           </p>
           <button
             onClick={() => setInteractiveFinderOpen(true)}
-            className="px-6 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] rounded-xl transition-colors shadow-sm"
+            className="px-6 py-3 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl transition-all shadow-md shadow-[#F25C54]/20 cursor-pointer"
           >
             Start Tutor Finder Wizard →
           </button>
@@ -103,7 +103,7 @@ export const HowItWorksPage: React.FC = () => {
       {/* Part 2: For Tutors & Applicants */}
       <section className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm space-y-8">
         <div className="border-b border-slate-100 pb-4">
-          <span className="text-xs font-bold text-[#06B6D4] uppercase tracking-wider">
+          <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider">
             For University Students & Teachers
           </span>
           <h2 className="text-2xl font-bold text-slate-900 mt-1">
@@ -134,9 +134,9 @@ export const HowItWorksPage: React.FC = () => {
               desc: 'Accept tutoring requests matching your neighborhood or online preferences, and receive prompt, secure compensation.',
             },
           ].map((item, idx) => (
-            <div key={idx} className="p-6 rounded-2xl bg-blue-50/40 border border-blue-100 flex flex-col justify-between">
+            <div key={idx} className="p-6 rounded-2xl bg-blue-50/40 border border-blue-100 flex flex-col justify-between hover-lift">
               <div>
-                <span className="text-xs font-black text-[#06B6D4] tracking-wider uppercase block mb-3">
+                <span className="text-xs font-black text-[#2563EB] tracking-wider uppercase block mb-3">
                   {item.step}
                 </span>
                 <h3 className="text-base font-bold text-slate-900 mb-2">
@@ -150,7 +150,7 @@ export const HowItWorksPage: React.FC = () => {
           ))}
         </div>
 
-        <div className="p-6 rounded-2xl bg-[#0D3B66] text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6.5 rounded-2xl bg-gradient-to-r from-[#0D3B66] to-[#0A2540] text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
           <div>
             <h4 className="text-sm font-bold">Ready to apply today?</h4>
             <p className="text-xs text-blue-200 mt-0.5">
@@ -160,7 +160,7 @@ export const HowItWorksPage: React.FC = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setActiveRoute('tutor-register')}
-              className="px-5 py-2 text-xs font-bold text-slate-900 bg-[#06B6D4] hover:bg-[#0891b2] rounded-xl transition-colors"
+              className="px-5 py-2.5 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl transition-all shadow-sm cursor-pointer"
             >
               Online Registration
             </button>
@@ -168,9 +168,9 @@ export const HowItWorksPage: React.FC = () => {
               href="https://t.me/pro_tutorbot"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2 text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl transition-colors flex items-center gap-1.5"
+              className="px-5 py-2.5 text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl transition-colors flex items-center gap-1.5"
             >
-              <Send className="w-3.5 h-3.5 text-[#06B6D4]" />
+              <Send className="w-3.5 h-3.5 text-[#F4B400]" />
               <span>Telegram Bot</span>
             </a>
           </div>
@@ -188,7 +188,7 @@ export const HowItWorksPage: React.FC = () => {
         </div>
 
         <div className="space-y-2">
-          <CheckCircle2 className="w-6 h-6 text-[#06B6D4]" />
+          <CheckCircle2 className="w-6 h-6 text-[#16A34A]" />
           <h4 className="text-sm font-bold text-slate-900">Tutor Replacement Guarantee</h4>
           <p className="text-xs text-slate-600 leading-relaxed">
             If the assigned tutor does not match your child’s learning rhythm after the first session, we arrange an alternative educator immediately.
@@ -196,7 +196,7 @@ export const HowItWorksPage: React.FC = () => {
         </div>
 
         <div className="space-y-2">
-          <BookOpen className="w-6 h-6 text-amber-500" />
+          <BookOpen className="w-6 h-6 text-[#F4B400]" />
           <h4 className="text-sm font-bold text-slate-900">Progress Monitoring</h4>
           <p className="text-xs text-slate-600 leading-relaxed">
             Coordinators check in monthly with both families and tutors to ensure measurable improvements in school grades and exam readiness.

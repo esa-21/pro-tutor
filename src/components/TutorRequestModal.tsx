@@ -411,9 +411,9 @@ export const TutorRequestModal: React.FC = () => {
                 <button
                   type="submit"
                   disabled={selectedSubjects.length === 0 || !studentName.trim()}
-                  className="px-6 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] disabled:opacity-50 rounded-xl shadow-md transition-all flex items-center gap-1.5"
+                  className="px-6 py-2.5 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] disabled:opacity-50 rounded-xl shadow-md shadow-[#F25C54]/25 transition-all flex items-center gap-1.5 cursor-pointer"
                 >
-                  <Sparkles className="w-4 h-4 text-[#06B6D4]" />
+                  <Sparkles className="w-4 h-4 text-[#F4B400]" />
                   <span>Submit Request</span>
                 </button>
               </div>

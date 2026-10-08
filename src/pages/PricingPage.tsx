@@ -52,36 +52,36 @@ export const PricingPage: React.FC = () => {
       </div>
 
       {/* Official Fee Structure Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         {pricingTiers.map((tier) => (
           <div
             key={tier.id}
-            className={`rounded-3xl p-8 bg-white border flex flex-col justify-between transition-all ${
+            className={`rounded-3xl p-8 bg-white border flex flex-col justify-between hover-lift transition-all ${
               tier.isPopular
-                ? 'border-[#0D3B66] ring-2 ring-[#0D3B66]/20 shadow-xl relative'
-                : 'border-slate-200/90 shadow-xs'
+                ? 'border-[#2563EB] ring-2 ring-[#2563EB]/25 shadow-2xl relative md:-translate-y-2'
+                : 'border-slate-200/90 shadow-sm'
             }`}
           >
             {tier.isPopular && (
-              <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#0D3B66] text-white text-[11px] font-bold uppercase tracking-wider py-1 px-4 rounded-full shadow-sm">
-                Most Requested
+              <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#F4B400] text-[#0D3B66] text-[11px] font-black uppercase tracking-wider py-1 px-4 rounded-full shadow-md">
+                Recommended / Most Popular
               </span>
             )}
 
             <div>
               <div className="border-b border-slate-100 pb-5">
-                <span className="text-xs font-bold text-[#06B6D4] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider">
                   {tier.recommendedFor}
                 </span>
-                <h3 className="text-xl font-extrabold text-slate-900 mt-1">
+                <h3 className="text-xl font-extrabold text-[#1F2937] mt-1">
                   {tier.gradeLevel}
                 </h3>
 
                 <div className="mt-4 flex items-baseline gap-1.5">
-                  <span className="text-4xl font-black text-[#0D3B66] tabular-nums">
+                  <span className="text-4xl sm:text-5xl font-black text-[#0D3B66] tabular-nums">
                     {tier.serviceFeeETB}
                   </span>
-                  <span className="text-sm font-bold text-slate-700">ETB</span>
+                  <span className="text-sm font-bold text-slate-800">ETB</span>
                   <span className="text-xs text-slate-500 font-normal">
                     / starting session fee
                   </span>
@@ -93,14 +93,14 @@ export const PricingPage: React.FC = () => {
 
               {/* Features */}
               <div className="py-6 space-y-3">
-                <p className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <p className="text-xs font-bold text-slate-800 uppercase tracking-wider">
                   Included in this Program:
                 </p>
-                <ul className="space-y-2.5 text-xs text-slate-600">
+                <ul className="space-y-3 text-xs text-slate-600">
                   {tier.features.map((feat, fIdx) => (
-                    <li key={fIdx} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#06B6D4] shrink-0 mt-0.5" />
-                      <span>{feat}</span>
+                    <li key={fIdx} className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#16A34A] fill-[#16A34A]/10 shrink-0 mt-0.5" />
+                      <span className="font-medium text-[#1F2937]">{feat}</span>
                     </li>
                   ))}
                 </ul>
@@ -110,13 +110,14 @@ export const PricingPage: React.FC = () => {
             <div className="pt-6 border-t border-slate-100">
               <button
                 onClick={() => handleSelectTier(tier.gradeLevel)}
-                className={`w-full py-3 rounded-xl font-bold text-xs transition-all shadow-sm ${
+                className={`w-full py-3.5 rounded-xl font-bold text-xs transition-all shadow-md cursor-pointer flex items-center justify-center gap-2 ${
                   tier.isPopular
-                    ? 'bg-[#0D3B66] hover:bg-[#1E3A8A] text-white'
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
+                    ? 'bg-[#F25C54] hover:bg-[#e04a42] text-white shadow-[#F25C54]/25 hover:scale-[1.02]'
+                    : 'bg-[#0D3B66] hover:bg-[#2563EB] text-white shadow-[#0D3B66]/15'
                 }`}
               >
-                Request Tutoring for {tier.gradeLevel}
+                <span>Request Tutoring for {tier.gradeLevel}</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -249,7 +250,7 @@ export const PricingPage: React.FC = () => {
                 });
                 setRequestModalOpen(true);
               }}
-              className="mt-4 w-full py-2.5 rounded-xl bg-[#06B6D4] hover:bg-[#0891b2] text-slate-950 font-bold text-xs transition-colors shadow-sm"
+              className="mt-4 w-full py-3 rounded-xl bg-[#F25C54] hover:bg-[#e04a42] text-white font-bold text-xs transition-colors shadow-md shadow-[#F25C54]/20 cursor-pointer"
             >
               Request This Plan
             </button>

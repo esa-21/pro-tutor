@@ -212,7 +212,7 @@ export const TutorProfileModal: React.FC = () => {
             </button>
             <button
               onClick={handleBook}
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] rounded-xl shadow-md transition-all"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl shadow-md shadow-[#F25C54]/25 transition-all cursor-pointer"
             >
               <span>Request Tutoring with {tutor.fullName.split(' ')[0]}</span>
               <ArrowRight className="w-4 h-4" />

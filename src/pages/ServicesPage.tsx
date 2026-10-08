@@ -41,7 +41,7 @@ export const ServicesPage: React.FC = () => {
 
       {/* 1. Academic Grade Levels */}
       <section className="space-y-6">
-        <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+        <h2 className="text-xl font-bold text-[#1F2937] flex items-center gap-2">
           <GraduationCap className="w-5 h-5 text-[#0D3B66]" />
           <span>Academic Grade Levels</span>
         </h2>
@@ -54,6 +54,7 @@ export const ServicesPage: React.FC = () => {
               fee: '300 ETB',
               desc: 'Foundational reading, writing, and arithmetic. Play-based learning in Amharic and English to spark a lifelong love of discovery.',
               topics: ['Phonics & Pronunciation', 'Bilingual Literacy', 'Basic Arithmetic', 'Handwriting Practice'],
+              accent: 'border-t-4 border-t-[#0D3B66]',
             },
             {
               level: 'Primary & Middle School',
@@ -61,6 +62,7 @@ export const ServicesPage: React.FC = () => {
               fee: '350 ETB',
               desc: 'Building analytical reasoning and preparing middle school students for the pivotal Grade 8 Regional Ministry Examination.',
               topics: ['Mathematics Mastery', 'General Science', 'English Grammar & Composition', 'Ministry Exam Practice'],
+              accent: 'border-t-4 border-t-[#2563EB]',
             },
             {
               level: 'Secondary High School',
@@ -68,6 +70,7 @@ export const ServicesPage: React.FC = () => {
               fee: '400 ETB',
               desc: 'Mastering the transition to secondary science and social subjects. Establishing strong homework habits and conceptual depth.',
               topics: ['Algebra & Geometry', 'Introductory Physics & Chemistry', 'Biology Fundamentals', 'Effective Study Habits'],
+              accent: 'border-t-4 border-t-[#F4B400]',
             },
             {
               level: 'Preparatory & University Entrance',
@@ -75,31 +78,32 @@ export const ServicesPage: React.FC = () => {
               fee: '400 ETB',
               desc: 'High-stakes preparation for Natural Science and Social Science stream national university admissions exams.',
               topics: ['Calculus & Advanced Math', 'Mechanics & Electromagnetism', 'Organic Chemistry & Genetics', 'Economics & Business'],
+              accent: 'border-t-4 border-t-[#16A34A]',
             },
           ].map((item, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-6 border border-slate-200/90 hover:border-[#0D3B66]/40 transition-all shadow-xs hover:shadow-md flex flex-col justify-between"
+              className={`bg-white rounded-2xl p-6.5 border border-slate-200/90 ${item.accent} hover:border-[#2563EB]/40 hover-lift flex flex-col justify-between`}
             >
               <div>
-                <span className="text-[11px] font-bold text-[#06B6D4] uppercase tracking-wider block mb-1">
+                <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider block mb-1">
                   {item.grades}
                 </span>
-                <h3 className="text-base font-bold text-slate-900 mb-2">
+                <h3 className="text-base font-bold text-[#1F2937] mb-2">
                   {item.level}
                 </h3>
-                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                <p className="text-xs text-[#64748B] leading-relaxed mb-4">
                   {item.desc}
                 </p>
 
                 <div className="space-y-1.5 border-t border-slate-100 pt-3">
-                  <p className="text-[11px] font-bold text-slate-700 uppercase tracking-wider">
+                  <p className="text-[11px] font-bold text-slate-800 uppercase tracking-wider">
                     Key Focus Areas:
                   </p>
                   {item.topics.map((t, tIdx) => (
                     <div key={tIdx} className="text-xs text-slate-600 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4]"></span>
-                      <span>{t}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span>
+                      <span className="font-medium text-slate-700">{t}</span>
                     </div>
                   ))}
                 </div>
@@ -107,12 +111,12 @@ export const ServicesPage: React.FC = () => {
 
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-slate-400 block">Starting Service Fee</span>
-                  <span className="text-xs font-bold text-[#0D3B66]">{item.fee}</span>
+                  <span className="text-[10px] text-slate-400 block font-medium">Starting Service Fee</span>
+                  <span className="text-sm font-black text-[#0D3B66] tabular-nums">{item.fee}</span>
                 </div>
                 <button
                   onClick={() => handleServiceSelect(item.grades)}
-                  className="px-3 py-1.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] rounded-lg transition-colors"
+                  className="px-3.5 py-2 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl shadow-xs transition-colors cursor-pointer"
                 >
                   Request Tutor
                 </button>
@@ -244,14 +248,17 @@ export const ServicesPage: React.FC = () => {
       </section>
 
       {/* Bottom CTA */}
-      <div className="text-center p-8 bg-[#0D3B66] rounded-3xl text-white space-y-4">
-        <h3 className="text-xl font-bold">Have Questions About Which Program Fits Best?</h3>
-        <p className="text-xs text-blue-200 max-w-lg mx-auto">
+      <div className="text-center p-8 sm:p-12 bg-gradient-to-r from-[#0D3B66] via-blue-900 to-[#0A2540] rounded-3xl text-white space-y-4 shadow-xl">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#F4B400]">
+          Personalized Academic Matching
+        </span>
+        <h3 className="text-xl sm:text-2xl font-bold">Have Questions About Which Program Fits Best?</h3>
+        <p className="text-xs sm:text-sm text-blue-100/90 max-w-lg mx-auto">
           Our coordinators are ready to advise you on tutor availability in your neighborhood. Contact us on Telegram channel <strong>@pro_tutorial21241</strong>, group <strong>@pro_tutorial2124</strong>, or request a tutor directly.
         </p>
         <button
           onClick={() => setRequestModalOpen(true)}
-          className="px-6 py-2.5 rounded-xl bg-[#06B6D4] text-slate-900 font-bold text-xs hover:bg-[#0891b2] transition-colors"
+          className="px-6 py-3.5 rounded-xl bg-[#F25C54] hover:bg-[#e04a42] text-white font-bold text-xs shadow-md shadow-[#F25C54]/25 transition-colors cursor-pointer"
         >
           Request Tutoring Now
         </button>

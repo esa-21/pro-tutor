@@ -208,21 +208,24 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <div className="bg-[#0D3B66] rounded-3xl p-8 text-center text-white space-y-4">
-        <h3 className="text-xl font-bold">Ready to Start Learning With Us?</h3>
-        <p className="text-xs text-blue-200 max-w-md mx-auto">
+      <div className="bg-gradient-to-r from-[#0D3B66] via-blue-900 to-[#0A2540] rounded-3xl p-8 sm:p-12 text-center text-white space-y-4 shadow-xl">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#F4B400]">
+          Ready to Start Learning With Us?
+        </span>
+        <h3 className="text-2xl sm:text-3xl font-extrabold">Empower Your Child&apos;s Academic Journey</h3>
+        <p className="text-xs sm:text-sm text-blue-100/90 max-w-md mx-auto">
           Connect with our team via Telegram channel <strong>@pro_tutorial21241</strong>, group <strong>@pro_tutorial2124</strong>, or request a tutor through our interactive finder.
         </p>
         <div className="pt-2 flex justify-center gap-3">
           <button
             onClick={() => setInteractiveFinderOpen(true)}
-            className="px-6 py-2.5 rounded-xl bg-[#06B6D4] text-slate-900 font-bold text-xs"
+            className="px-6 py-3 rounded-xl bg-[#F25C54] hover:bg-[#e04a42] text-white font-bold text-xs shadow-md shadow-[#F25C54]/25 transition-all cursor-pointer"
           >
             Find a Tutor
           </button>
           <button
             onClick={() => setActiveRoute('contact')}
-            className="px-6 py-2.5 rounded-xl bg-white/10 text-white font-semibold text-xs border border-white/20"
+            className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors cursor-pointer"
           >
             Contact Office
           </button>
