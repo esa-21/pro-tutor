@@ -78,13 +78,13 @@ export const FAQPage: React.FC = () => {
       {/* Title */}
       <div className="text-center space-y-4">
         <span className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
-          Help & Frequently Asked Questions
+          Help &amp; Frequently Asked Questions
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Find Quick Answers to Common Questions
+          Frequently Asked Questions About Tutoring in Ethiopia
         </h1>
         <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
-          Learn how Pro Tutorial Service evaluates tutors, coordinates schedules, and supports academic improvement in Ethiopia.
+          Clear answers on hiring in-home tutors in Addis Ababa, online lessons across Ethiopia, tutor screening, hourly service fees, and trial lesson guarantees.
         </p>
       </div>
 

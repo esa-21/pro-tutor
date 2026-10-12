@@ -257,6 +257,10 @@ export const AdminDashboard: React.FC = () => {
                       src={tut.avatar}
                       alt={tut.fullName}
                       referrerPolicy="no-referrer"
+                      loading="lazy"
+                      decoding="async"
+                      width="56"
+                      height="56"
                       className="w-14 h-14 rounded-xl object-cover bg-slate-100 border border-slate-200"
                     />
                     <div>

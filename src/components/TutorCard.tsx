@@ -56,8 +56,12 @@ export const TutorCard: React.FC<TutorCardProps> = ({
           <div className="relative shrink-0">
             <img
               src={displayAvatar}
-              alt={displayName}
+              alt={`${displayName} - Qualified Tutor in Ethiopia`}
               referrerPolicy="no-referrer"
+              loading="lazy"
+              decoding="async"
+              width="64"
+              height="64"
               className="w-16 h-16 rounded-xl object-cover border border-slate-100 bg-slate-100 shadow-xs"
               onError={(e) => {
                 (e.currentTarget as HTMLElement).style.display = 'none';

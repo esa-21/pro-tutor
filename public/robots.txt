@@ -2,5 +2,13 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Disallow private user accounts and admin dashboard routes from indexing
+Disallow: /login
+Disallow: /dashboard
+Disallow: /admin-dashboard
+Disallow: /student-register
+Disallow: /parent-register
+Disallow: /tutor-register
+
+# Sitemap location
 Sitemap: https://pro-tutor-virid.vercel.app/sitemap.xml

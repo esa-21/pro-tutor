@@ -44,10 +44,10 @@ export const PricingPage: React.FC = () => {
           Transparent Tutoring Fees
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Clear, Competitive Educational Service Fees
+          Transparent Tutoring Service Fees &amp; Packages in Ethiopia
         </h1>
         <p className="text-sm text-slate-600 leading-relaxed">
-          We pride ourselves on transparent, predictable service fees for families in Addis Ababa and all regional cities in Ethiopia.
+          Transparent, predictable rates for in-home tutoring in Addis Ababa and online tutoring nationwide. Compare hourly rates starting from 300 ETB, monthly study packages, and estimate monthly costs.
         </p>
       </div>
 

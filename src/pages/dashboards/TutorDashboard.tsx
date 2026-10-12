@@ -89,6 +89,10 @@ export const TutorDashboard: React.FC = () => {
             src={displayAvatar}
             alt={displayName}
             referrerPolicy="no-referrer"
+            loading="lazy"
+            decoding="async"
+            width="64"
+            height="64"
             className="w-16 h-16 rounded-2xl object-cover border-2 border-white/20 bg-slate-800"
           />
           <div>

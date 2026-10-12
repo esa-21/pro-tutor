@@ -19,10 +19,10 @@ export const AboutPage: React.FC = () => {
       {/* Header */}
       <div className="max-w-3xl mx-auto text-center space-y-4">
         <span className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
-          About Pro Tutorial Service
+          About Us
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Empowering Ethiopian Students Through Mentorship and Academic Dedication
+          About Pro Tutorial Service: Dedicated Tutoring Network in Ethiopia
         </h1>
         <p className="text-sm text-slate-600 leading-relaxed">
           &quot;Your Success, Our Commitment.&quot; / &quot;ለትምህርትዎ ስኬት፣ የእኛ ቁርጠኝነት!&quot;

@@ -35,6 +35,9 @@ const AppContent: React.FC = () => {
 
   React.useEffect(() => {
     updatePageSEO(activeRoute);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
   }, [activeRoute]);
 
   const renderCurrentView = () => {

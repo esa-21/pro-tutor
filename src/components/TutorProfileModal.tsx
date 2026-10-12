@@ -68,8 +68,12 @@ export const TutorProfileModal: React.FC = () => {
             <div className="relative">
               <img
                 src={displayAvatar}
-                alt={displayName}
+                alt={`${displayName} - Pro Tutorial Service Verified Educator`}
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
+                width="96"
+                height="96"
                 className="w-24 h-24 rounded-2xl object-cover border-2 border-white/20 bg-slate-800 shadow-md"
               />
               {tutor.verificationStatus === 'approved' && (

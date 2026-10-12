@@ -23,10 +23,10 @@ export const HowItWorksPage: React.FC = () => {
           Simple, Transparent Process
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          How Pro Tutorial Service Works
+          How Pro Tutorial Service Works: 4-Step Tutor Matching in Ethiopia
         </h1>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Whether you are a parent seeking guidance for your child or an educator looking to teach, our process is designed for clarity, safety, and mutual success.
+          Whether you are a parent seeking in-home tutoring in Addis Ababa or an educator applying to teach, our process is designed for clarity, safety, and mutual success.
         </p>
       </div>
 

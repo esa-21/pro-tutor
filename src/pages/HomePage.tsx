@@ -18,6 +18,9 @@ import {
   Clock,
   Home as HomeIcon,
   Laptop,
+  ChevronDown,
+  HelpCircle,
+  GraduationCap,
 } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
@@ -30,6 +33,8 @@ export const HomePage: React.FC = () => {
     testimonials,
     language,
   } = useApp();
+
+  const [openFaqIndex, setOpenFaqIndex] = React.useState<number | null>(0);
 
   const approvedTutors = tutors.filter((t) => t.verificationStatus === 'approved');
   const featuredTutors = approvedTutors.slice(0, 3);
@@ -61,16 +66,19 @@ export const HomePage: React.FC = () => {
 
               {/* Headline with Yellow Highlights */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
-                Find the <span className="text-[#F4B400] underline decoration-[#F4B400]/40 decoration-wavy decoration-2">Best Tutors</span> in Ethiopia for <span className="text-blue-100">KG–Grade 12</span>
+                Pro Tutorial Service | Home &amp; Online Tutors in Ethiopia for{' '}
+                <span className="text-[#F4B400] underline decoration-[#F4B400]/40 decoration-wavy decoration-2">
+                  KG–Grade 12
+                </span>
               </h1>
 
               {/* Supporting Text */}
               <p className="text-base sm:text-lg text-blue-100/90 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                Connect with qualified tutors for in-home and online tutoring in Addis Ababa and cities across Ethiopia.
+                Connecting families and students with qualified, vetted private tutors for in-home tutoring in Addis Ababa and online tutoring nationwide across Ethiopia.
               </p>
 
               <p className="text-xs sm:text-sm text-blue-200/80 max-w-xl mx-auto lg:mx-0">
-                {t('heroSupporting')}
+                Personalized one-on-one academic guidance for school subjects, Grade 8 Regional Ministry Exams, and Grade 12 National University Entrance Examinations.
               </p>
 
               {/* CTAs: Tomato primary CTA + Bright secondary CTA */}
@@ -146,8 +154,12 @@ export const HomePage: React.FC = () => {
                 <div className="relative rounded-3xl overflow-hidden border-2 border-white/15 shadow-2xl bg-slate-900 aspect-16/10">
                   <img
                     src="/src/assets/images/hero_ethiopian_tutor_student_1791018894030.jpg"
-                    alt="Ethiopian student and tutor during a personalized learning session"
+                    alt="Qualified Ethiopian home tutor and secondary school student studying mathematics and science together in Addis Ababa"
                     referrerPolicy="no-referrer"
+                    loading="eager"
+                    decoding="async"
+                    width="600"
+                    height="375"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#072442]/90 via-transparent to-transparent"></div>
@@ -596,7 +608,322 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. Final Call to Action Banner */}
+      {/* 8. How Home and Online Tutoring Work in Ethiopia */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+            Flexible Delivery Formats
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1F2937] tracking-tight">
+            How Home &amp; Online Tutoring Work in Ethiopia
+          </h2>
+          <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed">
+            Whether your student learns best face-to-face at home or through structured online lessons, our agency coordinates qualified Ethiopian educators to match your schedule.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* In-Home Tutoring */}
+          <div className="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-sm space-y-5">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#0D3B66] flex items-center justify-center">
+                <HomeIcon className="w-6 h-6 text-[#0D3B66]" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-slate-900">
+                  In-Home Tutoring in Addis Ababa
+                </h3>
+                <span className="text-xs font-semibold text-[#16A34A]">
+                  Direct Educator Home Visits
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              For families in Addis Ababa who prefer one-on-one attention without travel stress, a vetted tutor comes directly to your home. In-home tutoring allows the educator to closely observe handwriting, homework habits, and problem-solving patterns.
+            </p>
+
+            <div className="space-y-2.5 pt-2 border-t border-slate-100 text-xs text-slate-700">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5" />
+                <span>
+                  <strong>Addis Ababa Sub-Cities Covered:</strong> Bole, Yeka, Arada, Kirkos, Lideta, Nifas Silk-Lafto, Gulele, Kolfe Keranio, Akaki Kality, and Addis Ketema.
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5" />
+                <span>
+                  <strong>Parent Supervision &amp; Safety:</strong> Parents remain in the home during sessions for comfortable, safe, and focused study routines.
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5" />
+                <span>
+                  <strong>Hands-on Problem Solving:</strong> Ideal for foundational KG literacy, math drills, and heavy science calculation subjects.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Online Tutoring */}
+          <div className="bg-white rounded-3xl p-8 border border-slate-200/90 shadow-sm space-y-5">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-[#F4B400] flex items-center justify-center">
+                <Laptop className="w-6 h-6 text-[#0D3B66]" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-slate-900">
+                  Online Tutoring Nationwide Across Ethiopia
+                </h3>
+                <span className="text-xs font-semibold text-[#2563EB]">
+                  Interactive Digital Whiteboard Lessons
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Online tutoring connects students across Ethiopia with top educators from Addis Ababa University (AAU) and specialized high school teachers. Perfect for regional families or students requiring flexible evening and weekend hours.
+            </p>
+
+            <div className="space-y-2.5 pt-2 border-t border-slate-100 text-xs text-slate-700">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+                <span>
+                  <strong>Regional Cities Reached:</strong> Adama, Hawassa, Bahir Dar, Bishoftu, Dire Dawa, Mekelle, Gondar, Jimma, and students in diaspora communities.
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+                <span>
+                  <strong>Digital Interactive Tools:</strong> Shared virtual whiteboards, past national exam PDF walkthroughs, and recorded review notes.
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+                <span>
+                  <strong>Flexible Timetables:</strong> Convenient session timings without commuting delay, after school or during weekend study blocks.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Subjects and Grade Levels Supported */}
+      <section className="bg-slate-50 py-18 border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+              Ethiopian School Curriculum
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1F2937] tracking-tight">
+              Subjects &amp; Grade Levels Supported by Our Educators
+            </h2>
+            <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed">
+              Our certified tutors and university scholars support learners at every stage of the Ethiopian educational curriculum, from early literacy to competitive national entrance exams.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs space-y-3">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#0D3B66] block">
+                Tier 1 · Early Childhood
+              </span>
+              <h3 className="text-base font-bold text-slate-900">
+                KG – Grade 4 (Foundational)
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Nurturing foundational literacy, phonics, and early numerical reasoning in a supportive, encouraging environment.
+              </p>
+              <div className="pt-2 border-t border-slate-100 text-xs text-slate-700 space-y-1 font-medium">
+                <div>• English &amp; Amharic Phonics</div>
+                <div>• Early Arithmetic &amp; Math</div>
+                <div>• Handwriting &amp; Reading Fluency</div>
+                <div>• Homework Guidance</div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs space-y-3">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#2563EB] block">
+                Tier 2 · Middle School
+              </span>
+              <h3 className="text-base font-bold text-slate-900">
+                Grades 5 – 8 (Junior)
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Building critical reasoning and targeted preparation for the Grade 8 Regional Ministry Examination.
+              </p>
+              <div className="pt-2 border-t border-slate-100 text-xs text-slate-700 space-y-1 font-medium">
+                <div>• Mathematics &amp; Pre-Algebra</div>
+                <div>• General Science &amp; Biology</div>
+                <div>• Social Studies &amp; English</div>
+                <div>• Grade 8 Ministry Exam Drills</div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs space-y-3">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#F4B400] block">
+                Tier 3 · General Secondary
+              </span>
+              <h3 className="text-base font-bold text-slate-900">
+                Grades 9 – 10 (High School)
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Mastering secondary science and mathematical depth to build strong foundations for stream selection.
+              </p>
+              <div className="pt-2 border-t border-slate-100 text-xs text-slate-700 space-y-1 font-medium">
+                <div>• Physics, Chemistry &amp; Biology</div>
+                <div>• Algebra, Geometry &amp; Trigonometry</div>
+                <div>• English Grammar &amp; Composition</div>
+                <div>• Civics &amp; ICT / Computer Science</div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs space-y-3">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#F25C54] block">
+                Tier 4 · Preparatory &amp; Entrance
+              </span>
+              <h3 className="text-base font-bold text-slate-900">
+                Grades 11 – 12 (University Prep)
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Intensive preparation for the Ethiopian University Entrance Examination (ESLCE) in Natural and Social Science streams.
+              </p>
+              <div className="pt-2 border-t border-slate-100 text-xs text-slate-700 space-y-1 font-medium">
+                <div>• Natural Science: Physics, Chem, Bio, Math</div>
+                <div>• Social Science: Math, Econ, Geo, History</div>
+                <div>• Entrance Exam Past-Paper Drills</div>
+                <div>• Speed, Accuracy &amp; Exam Strategy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 10. How Tutor Applications and Matching Work */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/90 shadow-sm space-y-8">
+          <div className="max-w-3xl space-y-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0D3B66]">
+              Quality Assurance &amp; Integrity
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              How Tutor Applications &amp; Student Matching Work
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              We uphold high academic standards. Every tutor in our registry undergoes screening before being recommended to families.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="space-y-2.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
+              <span className="text-xs font-black text-[#0D3B66]">01. Application</span>
+              <h4 className="text-sm font-bold text-slate-900">Transcript Submission</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Educators submit official academic credentials from AAU, AASTU, Kotebe, or regional universities, along with high school entrance scores.
+              </p>
+            </div>
+
+            <div className="space-y-2.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
+              <span className="text-xs font-black text-[#2563EB]">02. Verification</span>
+              <h4 className="text-sm font-bold text-slate-900">Coordinator Review</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Our agency verifies identity, GPA standings, subject mastery, and communication skills suitable for working with children.
+              </p>
+            </div>
+
+            <div className="space-y-2.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
+              <span className="text-xs font-black text-[#F4B400]">03. Matching</span>
+              <h4 className="text-sm font-bold text-slate-900">Diagnostic Alignment</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                When a family requests tutoring, we match an educator according to grade tier, syllabus, sub-city proximity, and schedule availability.
+              </p>
+            </div>
+
+            <div className="space-y-2.5 p-4 rounded-xl bg-slate-50 border border-slate-100">
+              <span className="text-xs font-black text-[#16A34A]">04. Ongoing Oversight</span>
+              <h4 className="text-sm font-bold text-slate-900">Coordinator Follow-up</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                We monitor weekly progress. If an instructor does not match your child's learning rhythm, we provide a replacement educator without penalty.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. Frequently Asked Questions for Ethiopian Parents and Students */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="text-center space-y-3">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+            Clear Answers
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1F2937] tracking-tight">
+            Frequently Asked Questions for Ethiopian Parents &amp; Students
+          </h2>
+          <p className="text-xs sm:text-sm text-[#64748B]">
+            Authentic guidance on hiring home tutors in Addis Ababa and online tutors across Ethiopia.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          {[
+            {
+              q: 'How does in-home tutoring work in Addis Ababa?',
+              a: 'Once you submit a request with your child’s grade and subjects, our coordinator matches a verified educator residing near your sub-city (Bole, Yeka, Arada, Kirkos, Lideta, Nifas Silk-Lafto, Gulele, etc.). The tutor visits your residence at agreed weekly hours (usually 2 to 4 sessions per week). A parent or guardian is always expected to be present at home during tutoring hours for comfort and safety.',
+            },
+            {
+              q: 'Can students outside Addis Ababa take tutoring lessons?',
+              a: 'Yes! We provide interactive online tutoring across all Ethiopian regional cities, including Adama, Hawassa, Bahir Dar, Bishoftu, Dire Dawa, Mekelle, Gondar, and Jimma. Online lessons utilize shared digital whiteboards, past national exam PDFs, and structured video instruction.',
+            },
+            {
+              q: 'How does Pro Tutorial Service screen and verify tutors?',
+              a: 'We evaluate university transcripts (such as Addis Ababa University and AASTU), academic standing, teaching experience, and communication capability. Only educators who meet our agency verification criteria appear in our public directory or receive student matching assignments.',
+            },
+            {
+              q: 'What happens if the tutor’s teaching style does not fit my child?',
+              a: 'We offer a tutor replacement policy. If after the initial introductory sessions you feel the educator’s pedagogical method does not connect with your student, our academic coordinator will arrange a replacement tutor tailored to your child’s needs without any extra agency penalty.',
+            },
+            {
+              q: 'What are the tutoring service fees and payment terms?',
+              a: 'Our starting service fees begin at 300 ETB per session for KG–Grade 4, 350 ETB for Grades 5–8, and 400 ETB for Grades 9–12. All fees are discussed openly prior to commencement with no hidden costs. Payments are processed securely via local Ethiopian bank options (Commercial Bank of Ethiopia, Awash, Telebirr, etc.) after session confirmation.',
+            },
+            {
+              q: 'How can families submit a tutoring request or speak with a coordinator?',
+              a: 'You can submit a request directly through our online form on this website, use our interactive 5-Step Finder, or contact our coordinators via official Telegram (@pr_tutor12 or @pro_tutorial21241) and phone.',
+            },
+          ].map((faq, idx) => {
+            const isOpen = openFaqIndex === idx;
+            return (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden transition-all shadow-2xs"
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-slate-50/60 transition-colors"
+                >
+                  <span className="text-xs sm:text-sm font-bold text-slate-900">
+                    {faq.q}
+                  </span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${
+                      isOpen ? 'rotate-180 text-[#0D3B66]' : ''
+                    }`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <div className="px-5 pb-5 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-100">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 12. Final Call to Action Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-gradient-to-r from-[#0D3B66] via-blue-900 to-[#0A2540] text-white p-8 sm:p-14 text-center relative overflow-hidden shadow-2xl">
           <div className="max-w-2xl mx-auto space-y-4 relative z-10">

@@ -328,7 +328,7 @@ export const FindTutorPage: React.FC = () => {
             <span className="text-xs text-slate-500 font-medium">KG to Grade 12</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#1F2937] tracking-tight mt-1">
-            Find Qualified Tutors in Ethiopia
+            Find Qualified Home &amp; Online Tutors in Ethiopia
           </h1>
           <p className="text-xs sm:text-sm text-[#64748B] mt-1 max-w-2xl">
             Filter qualified home and online educators by subject and educational level across Addis Ababa and regional cities.
