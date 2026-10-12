@@ -62,9 +62,13 @@ export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Zone 1: Single element Brand Wordmark (Constitution Top Bar Contract) */}
-        <button
-          onClick={() => handleNav('home')}
+        {/* Zone 1: Single element Brand Wordmark */}
+        <a
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            handleNav('home');
+          }}
           className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0D3B66]"
         >
           <div className="w-11 h-11 rounded-xl bg-[#0D3B66] text-white flex items-center justify-center shadow-md shadow-[#0D3B66]/20 group-hover:bg-[#2563EB] transition-colors">
@@ -75,17 +79,21 @@ export const Header: React.FC = () => {
               PRO TUTORIAL SERVICE
             </span>
             <span className="text-[11px] font-semibold tracking-wider text-[#2563EB] uppercase block mt-1">
-              Addis Ababa & Regional Ethiopia
+              Addis Ababa &amp; Regional Ethiopia
             </span>
           </div>
-        </button>
+        </a>
 
         {/* Zone 2: Clean Text Navigation Links + More Dropdown */}
         <nav className="hidden xl:flex items-center gap-6 text-sm font-semibold text-slate-700">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.route}
-              onClick={() => handleNav(item.route)}
+              href={item.route === 'home' ? '/' : `/${item.route}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav(item.route);
+              }}
               className={`hover:text-[#2563EB] transition-colors cursor-pointer relative py-1 focus:outline-none whitespace-nowrap ${
                 activeRoute === item.route
                   ? 'text-[#0D3B66] font-bold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0D3B66]'
@@ -93,7 +101,7 @@ export const Header: React.FC = () => {
               }`}
             >
               {item.label}
-            </button>
+            </a>
           ))}
 
           {/* More menu */}
@@ -109,13 +117,17 @@ export const Header: React.FC = () => {
             {dropdownOpen && (
               <div className="absolute top-full right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-slate-200/90 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                 {secondaryNavItems.map((sub) => (
-                  <button
+                  <a
                     key={sub.route}
-                    onClick={() => handleNav(sub.route)}
+                    href={`/${sub.route}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNav(sub.route);
+                    }}
                     className="w-full text-left px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#2563EB] transition-colors block"
                   >
                     {sub.label}
-                  </button>
+                  </a>
                 ))}
               </div>
             )}
@@ -286,17 +298,21 @@ export const Header: React.FC = () => {
         <div className="xl:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-lg">
           <div className="space-y-1">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.route}
-                onClick={() => handleNav(item.route)}
-                className={`w-full text-left px-3.5 py-2.5 text-sm font-semibold rounded-xl transition-colors ${
+                href={item.route === 'home' ? '/' : `/${item.route}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav(item.route);
+                }}
+                className={`w-full block text-left px-3.5 py-2.5 text-sm font-semibold rounded-xl transition-colors ${
                   activeRoute === item.route
                     ? 'bg-[#0D3B66] text-white shadow-xs'
                     : 'text-slate-700 hover:bg-slate-50'
                 }`}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </div>
 
@@ -305,39 +321,55 @@ export const Header: React.FC = () => {
               More Educational Resources
             </p>
             {secondaryNavItems.map((sub) => (
-              <button
+              <a
                 key={sub.route}
-                onClick={() => handleNav(sub.route)}
+                href={`/${sub.route}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav(sub.route);
+                }}
                 className="w-full text-left px-3.5 py-2 text-xs font-medium text-slate-600 hover:text-[#2563EB] block"
               >
                 {sub.label}
-              </button>
+              </a>
             ))}
           </div>
 
           <div className="border-t border-slate-100 pt-3 flex flex-col gap-2">
             {!currentUser && (
               <>
-                <button
-                  onClick={() => handleNav('login')}
-                  className="w-full py-2.5 text-center text-xs font-semibold text-slate-700 border border-slate-200 rounded-xl hover:bg-slate-50"
+                <a
+                  href="/login"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('login');
+                  }}
+                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-700 border border-slate-200 rounded-xl hover:bg-slate-50"
                 >
                   {t('navLogin')}
-                </button>
-                <button
-                  onClick={() => handleNav('find-tutor')}
-                  className="w-full py-2.5 text-center text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl shadow-sm"
+                </a>
+                <a
+                  href="/find-tutor"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('find-tutor');
+                  }}
+                  className="w-full block py-2.5 text-center text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl shadow-sm"
                 >
                   {t('findTutorCTA')}
-                </button>
+                </a>
               </>
             )}
-            <button
-              onClick={() => handleNav('become-tutor')}
-              className="w-full py-2.5 text-center text-xs font-semibold text-[#0D3B66] bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-xl transition-colors"
+            <a
+              href="/become-tutor"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav('become-tutor');
+              }}
+              className="w-full block py-2.5 text-center text-xs font-semibold text-[#0D3B66] bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-xl transition-colors"
             >
               {t('becomeTutorCTA')}
-            </button>
+            </a>
           </div>
         </div>
       )}

@@ -13,6 +13,7 @@ export const PRIVATE_ROUTES = new Set([
   'student-register',
   'parent-register',
   'tutor-register',
+  'not-found',
 ]);
 
 export const ROUTE_SEO: Record<string, RouteSEO> = {
@@ -153,6 +154,11 @@ export const ROUTE_SEO: Record<string, RouteSEO> = {
     description:
       'Administrative dashboard for tutor verification, student matching, pricing management, and platform analytics at Pro Tutorial Service.',
     canonicalPath: '/admin-dashboard',
+  },
+  'not-found': {
+    title: 'Page Not Found (404) | Pro Tutorial Service',
+    description: 'The requested page could not be found on Pro Tutorial Service Ethiopia.',
+    canonicalPath: '/404',
   },
 };
 

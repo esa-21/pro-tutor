@@ -128,36 +128,56 @@ function saveToStorage<T>(key: string, value: T) {
   }
 }
 
+export const VALID_ROUTES = [
+  'about',
+  'services',
+  'find-tutor',
+  'pricing',
+  'how-it-works',
+  'testimonials',
+  'become-tutor',
+  'contact',
+  'faq',
+  'blog',
+  'learning-tips',
+  'careers',
+  'privacy',
+  'terms',
+  'refund',
+  'help',
+  'login',
+  'student-register',
+  'parent-register',
+  'tutor-register',
+  'dashboard',
+  'admin-dashboard',
+];
+
+export const ROUTE_ALIASES: Record<string, string> = {
+  findtutor: 'find-tutor',
+  find_tutor: 'find-tutor',
+  'find-a-tutor': 'find-tutor',
+  tutors: 'find-tutor',
+  tutor: 'find-tutor',
+  howitworks: 'how-it-works',
+  how_it_works: 'how-it-works',
+  'about-us': 'about',
+  learningtips: 'learning-tips',
+  learning_tips: 'learning-tips',
+  becometutor: 'become-tutor',
+  become_tutor: 'become-tutor',
+  'tutor-apply': 'become-tutor',
+  admin: 'admin-dashboard',
+};
+
 const getInitialRoute = (): string => {
   if (typeof window !== 'undefined') {
-    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
-    if (!path) return 'home';
-    const validRoutes = [
-      'about',
-      'services',
-      'find-tutor',
-      'pricing',
-      'how-it-works',
-      'testimonials',
-      'become-tutor',
-      'contact',
-      'faq',
-      'blog',
-      'learning-tips',
-      'careers',
-      'privacy',
-      'terms',
-      'refund',
-      'help',
-      'login',
-      'student-register',
-      'parent-register',
-      'tutor-register',
-      'dashboard',
-      'admin-dashboard',
-    ];
-    if (validRoutes.includes(path)) return path;
-    return 'home';
+    const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+    if (!rawPath) return 'home';
+    if (rawPath === 'home') return 'home';
+    if (ROUTE_ALIASES[rawPath]) return ROUTE_ALIASES[rawPath];
+    if (VALID_ROUTES.includes(rawPath)) return rawPath;
+    return 'not-found';
   }
   return 'home';
 };
@@ -277,8 +297,16 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
-      setActiveRouteState(path);
+      const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+      if (!rawPath || rawPath === 'home') {
+        setActiveRouteState('home');
+      } else if (ROUTE_ALIASES[rawPath]) {
+        setActiveRouteState(ROUTE_ALIASES[rawPath]);
+      } else if (VALID_ROUTES.includes(rawPath)) {
+        setActiveRouteState(rawPath);
+      } else {
+        setActiveRouteState('not-found');
+      }
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -288,8 +316,13 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const setActiveRoute = (route: string) => {
     setActiveRouteState(route);
     if (typeof window !== 'undefined') {
-      const newPath = route === 'home' ? '/' : `/${route}`;
-      if (window.location.pathname !== newPath) {
+      const newPath =
+        route === 'home'
+          ? '/'
+          : route === 'not-found'
+          ? window.location.pathname
+          : `/${route}`;
+      if (window.location.pathname !== newPath && route !== 'not-found') {
         window.history.pushState({}, '', newPath);
       }
     }

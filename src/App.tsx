@@ -22,6 +22,7 @@ import { LearningTipsPage } from './pages/LearningTipsPage';
 import { CareersPage } from './pages/CareersPage';
 import { LegalPages } from './pages/LegalPages';
 import { LoginPage, RegisterPage } from './pages/AuthPages';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 // Dashboards
 import { StudentDashboard } from './pages/dashboards/StudentDashboard';
@@ -88,8 +89,10 @@ const AppContent: React.FC = () => {
         if (currentUser?.role === 'parent') return <ParentDashboard />;
         if (currentUser?.role === 'tutor') return <TutorDashboard />;
         return <StudentDashboard />;
+      case 'not-found':
+        return <NotFoundPage />;
       default:
-        return <HomePage />;
+        return <NotFoundPage />;
     }
   };
 
