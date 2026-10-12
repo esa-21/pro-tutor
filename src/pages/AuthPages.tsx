@@ -166,8 +166,8 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
   const [learningFormat, setLearningFormat] = useState<'in_home' | 'online' | 'hybrid'>('in_home');
 
   // Tutor Specific
-  const [university, setUniversity] = useState('Addis Ababa University (AAU)');
-  const [department, setDepartment] = useState('Physics & Mathematics');
+  const [university, setUniversity] = useState('');
+  const [department, setDepartment] = useState('');
   const [academicStatus, setAcademicStatus] = useState('B.Sc. Graduate');
   const [experienceYears, setExperienceYears] = useState(2);
   const [bio, setBio] = useState('');
@@ -350,7 +350,7 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
                   required
                   value={university}
                   onChange={(e) => setUniversity(e.target.value)}
-                  placeholder="e.g. Addis Ababa University (AAU)"
+                  placeholder="e.g. Addis Ababa University, Kotebe, or Accredited Institution"
                   className="w-full p-2.5 rounded-xl border border-slate-300 text-xs"
                 />
               </div>
@@ -364,7 +364,7 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
                   required
                   value={department}
                   onChange={(e) => setDepartment(e.target.value)}
-                  placeholder="e.g. Electrical Engineering"
+                  placeholder="e.g. Mathematics, Natural Sciences, English"
                   className="w-full p-2.5 rounded-xl border border-slate-300 text-xs"
                 />
               </div>

@@ -1,0 +1,195 @@
+export interface RouteSEO {
+  title: string;
+  description: string;
+  canonicalPath: string;
+}
+
+export const CANONICAL_DOMAIN = 'https://pro-tutor-virid.vercel.app';
+
+export const ROUTE_SEO: Record<string, RouteSEO> = {
+  home: {
+    title: 'Pro Tutorial Service Ethiopia | Home Tutors for KG–Grade 12',
+    description:
+      'Find qualified home and online tutors for KG–Grade 12 in Addis Ababa and across Ethiopia. Explore tutoring services, pricing, and tutor registration.',
+    canonicalPath: '/',
+  },
+  'find-tutor': {
+    title: 'Find Qualified Home Tutors in Addis Ababa & Ethiopia | Pro Tutorial Service',
+    description:
+      'Browse vetted private tutors in Ethiopia and home tutors in Addis Ababa. Filter by subject, KG–Grade 12 curriculum, in-person lessons, or online tutoring.',
+    canonicalPath: '/find-tutor',
+  },
+  services: {
+    title: 'KG–Grade 12 Tutoring Services in Ethiopia | Pro Tutorial Service',
+    description:
+      'Comprehensive tutoring services including in-home tutoring in Addis Ababa, online tutoring Ethiopia, Grade 8 ministry and Grade 12 entrance exam prep.',
+    canonicalPath: '/services',
+  },
+  pricing: {
+    title: 'Affordable Tutoring Pricing & Packages in Ethiopia | Pro Tutorial Service',
+    description:
+      'Transparent pricing for home tutors in Addis Ababa and online tutoring Ethiopia. Compare hourly rates, monthly study packages, and group session discounts.',
+    canonicalPath: '/pricing',
+  },
+  'how-it-works': {
+    title: 'How It Works | Match with Home Tutors in Ethiopia | Pro Tutorial Service',
+    description:
+      'Learn how we connect families with certified private tutors in Ethiopia. A fast 4-step process from consultation and tutor selection to active learning.',
+    canonicalPath: '/how-it-works',
+  },
+  about: {
+    title: 'About Us | Trusted Tutoring Network in Ethiopia | Pro Tutorial Service',
+    description:
+      'Pro Tutorial Service is dedicated to empowering KG–Grade 12 learners across Addis Ababa and Ethiopia through vetted home tutors and personalized guidance.',
+    canonicalPath: '/about',
+  },
+  'become-tutor': {
+    title: 'Become a Tutor in Ethiopia | Teach & Earn | Pro Tutorial Service',
+    description:
+      'Join our network of qualified private tutors in Ethiopia. Provide in-home or online tutoring in Addis Ababa, set flexible hours, and receive competitive pay.',
+    canonicalPath: '/become-tutor',
+  },
+  testimonials: {
+    title: 'Parent & Student Reviews | Pro Tutorial Service Ethiopia',
+    description:
+      'Read authentic reviews from students and parents who improved their grades with verified home tutors in Addis Ababa and online tutors across Ethiopia.',
+    canonicalPath: '/testimonials',
+  },
+  contact: {
+    title: 'Contact Us | Pro Tutorial Service Addis Ababa, Ethiopia',
+    description:
+      'Get in touch with our tutoring coordinators in Addis Ababa. Request home tutors in Ethiopia, ask about packages, or reach us via Telegram and phone.',
+    canonicalPath: '/contact',
+  },
+  blog: {
+    title: 'Education & Tutoring Blog Ethiopia | Pro Tutorial Service',
+    description:
+      'Expert advice on the Ethiopian school curriculum, Grade 12 entrance exam tips, study methods, and educational guidance for KG–Grade 12 students.',
+    canonicalPath: '/blog',
+  },
+  'learning-tips': {
+    title: 'Study & Exam Preparation Tips for Ethiopian Students | Pro Tutorial',
+    description:
+      'Proven study techniques and exam preparation strategies from experienced private tutors in Ethiopia for Grade 8 regional and Grade 12 national exams.',
+    canonicalPath: '/learning-tips',
+  },
+  faq: {
+    title: 'Frequently Asked Questions | Pro Tutorial Service Ethiopia',
+    description:
+      'Answers to common questions about hiring home tutors in Addis Ababa, online tutoring Ethiopia, tutor screening, hourly rates, and trial lessons.',
+    canonicalPath: '/faq',
+  },
+  careers: {
+    title: 'Careers & Education Opportunities | Pro Tutorial Service Ethiopia',
+    description:
+      'Discover tutoring and academic coordination career opportunities at Pro Tutorial Service Ethiopia. Join our team delivering quality education.',
+    canonicalPath: '/careers',
+  },
+  privacy: {
+    title: 'Privacy Policy | Pro Tutorial Service Ethiopia',
+    description:
+      'Read how Pro Tutorial Service collects and protects personal and educational data for students, parents, and private tutors across Ethiopia.',
+    canonicalPath: '/privacy',
+  },
+  terms: {
+    title: 'Terms of Service | Pro Tutorial Service Ethiopia',
+    description:
+      'Review terms of service, session policies, tutor expectations, and platform guidelines for users of Pro Tutorial Service Ethiopia.',
+    canonicalPath: '/terms',
+  },
+  refund: {
+    title: 'Refund Policy & Satisfaction Guarantee | Pro Tutorial Service Ethiopia',
+    description:
+      'Understand our tutor replacement guarantee, dispute resolution, and refund policies for home tutoring and online tutoring services in Ethiopia.',
+    canonicalPath: '/refund',
+  },
+  help: {
+    title: 'Help & Support Center | Pro Tutorial Service Ethiopia',
+    description:
+      'Need assistance with tutor matching or account questions? Access support guides, contact info, and fast assistance from Pro Tutorial Service.',
+    canonicalPath: '/help',
+  },
+  login: {
+    title: 'Portal Login | Pro Tutorial Service Ethiopia',
+    description:
+      'Sign in to your student, parent, tutor, or admin account on Pro Tutorial Service Ethiopia to manage sessions, requests, and schedules.',
+    canonicalPath: '/login',
+  },
+  'student-register': {
+    title: 'Student Registration | Find Private Tutors | Pro Tutorial Service',
+    description:
+      'Register as a student to match with experienced home tutors in Addis Ababa and online tutors across Ethiopia for KG–Grade 12 academic subjects.',
+    canonicalPath: '/student-register',
+  },
+  'parent-register': {
+    title: 'Parent Registration | Hire Qualified Home Tutors | Pro Tutorial Service',
+    description:
+      'Register as a parent to request vetted home tutors in Addis Ababa for your children. Personalized one-on-one KG–Grade 12 academic tutoring.',
+    canonicalPath: '/parent-register',
+  },
+  'tutor-register': {
+    title: 'Tutor Registration | Join Private Tutors in Ethiopia | Pro Tutorial',
+    description:
+      'Apply to join Pro Tutorial Service as a certified tutor in Addis Ababa and Ethiopian regional cities. Share your expertise and earn competitive income.',
+    canonicalPath: '/tutor-register',
+  },
+  dashboard: {
+    title: 'User Dashboard | Pro Tutorial Service Ethiopia',
+    description:
+      'Access your personal dashboard to view tutoring requests, match status, learning schedules, and direct tutor communication.',
+    canonicalPath: '/dashboard',
+  },
+  'admin-dashboard': {
+    title: 'Admin Management Console | Pro Tutorial Service Ethiopia',
+    description:
+      'Administrative dashboard for tutor verification, student matching, pricing management, and platform analytics at Pro Tutorial Service.',
+    canonicalPath: '/admin-dashboard',
+  },
+};
+
+/**
+ * Updates document title, meta description, canonical link, and OpenGraph/Twitter tags dynamically.
+ */
+export function updatePageSEO(route: string): void {
+  if (typeof document === 'undefined') return;
+
+  const seo = ROUTE_SEO[route] || ROUTE_SEO.home;
+
+  // 1. Title
+  document.title = seo.title;
+
+  // 2. Helper to set or create meta tag
+  const setMeta = (nameOrProperty: string, value: string, isProperty = false) => {
+    const attr = isProperty ? 'property' : 'name';
+    let el = document.querySelector(`meta[${attr}="${nameOrProperty}"]`) as HTMLMetaElement | null;
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(attr, nameOrProperty);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', value);
+  };
+
+  // 3. Meta Description
+  setMeta('description', seo.description);
+
+  // 4. OpenGraph
+  setMeta('og:title', seo.title, true);
+  setMeta('og:description', seo.description, true);
+  const fullUrl = `${CANONICAL_DOMAIN}${seo.canonicalPath === '/' ? '/' : seo.canonicalPath}`;
+  setMeta('og:url', fullUrl, true);
+  setMeta('og:site_name', 'Pro Tutorial Service Ethiopia', true);
+
+  // 5. Twitter
+  setMeta('twitter:title', seo.title);
+  setMeta('twitter:description', seo.description);
+
+  // 6. Canonical link
+  let canonicalEl = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!canonicalEl) {
+    canonicalEl = document.createElement('link');
+    canonicalEl.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonicalEl);
+  }
+  canonicalEl.setAttribute('href', fullUrl);
+}

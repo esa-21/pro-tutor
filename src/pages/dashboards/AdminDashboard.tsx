@@ -275,10 +275,12 @@ export const AdminDashboard: React.FC = () => {
                         </span>
                       </div>
                       <p className="text-xs text-slate-600 mt-0.5">
-                        {tut.university} · {tut.department} ({tut.academicStatus})
+                        {tut.fullName.toLowerCase().includes('esayas') || tut.fullName.toLowerCase().includes('hailu')
+                          ? 'Professional Tutoring Services | KG–Grade 12'
+                          : `${tut.university} · ${tut.department} (${tut.academicStatus})`}
                       </p>
                       <p className="text-[11px] text-slate-500">
-                        Email: {tut.email} · Phone: {tut.phone || 'N/A'} · Joined: {tut.joinedDate}
+                        Email: {(tut.email || '').toLowerCase().includes('esayas') || (tut.email || '').toLowerCase().includes('hailu') ? 'admin@protutorial.et' : tut.email || 'N/A'} · Phone: {tut.phone || 'N/A'} · Joined: {tut.joinedDate}
                       </p>
                     </div>
                   </div>
@@ -587,7 +589,9 @@ export const AdminDashboard: React.FC = () => {
                   <div>
                     <span className="font-bold text-slate-900">{log.action}</span>
                     <p className="text-slate-600 text-[11px] mt-0.5">{log.details}</p>
-                    <p className="text-slate-400 text-[10px]">By {log.adminName} ({log.adminEmail})</p>
+                    <p className="text-slate-400 text-[10px]">
+                      By {log.adminName.toLowerCase().includes('esayas') || log.adminName.toLowerCase().includes('hailu') ? 'Pro Tutorial Service' : log.adminName} ({log.adminEmail.toLowerCase().includes('esayas') || log.adminEmail.toLowerCase().includes('hailu') ? 'admin@protutorial.et' : log.adminEmail})
+                    </p>
                   </div>
                   <span className="text-[11px] text-slate-400 font-mono shrink-0">
                     {log.timestamp}

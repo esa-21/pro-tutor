@@ -18,24 +18,65 @@ export const TutorDashboard: React.FC = () => {
   const { currentUser, tutors, sessions, updateTutorProfile, updateSessionStatus } = useApp();
 
   // Find current tutor profile
-  const tutorProfile =
+  const baseTutorProfile =
     tutors.find((t) => t.userId === currentUser?.id || t.email === currentUser?.email) ||
-    tutors[0]; // fallback for demo purposes
+    tutors.find((t) => t.fullName === 'Pro Tutorial Service') ||
+    tutors[0];
+
+  const isPersonal =
+    (baseTutorProfile.fullName || '').toLowerCase().includes('esayas') ||
+    (baseTutorProfile.fullName || '').toLowerCase().includes('hailu') ||
+    (baseTutorProfile.email || '').toLowerCase().includes('esayas') ||
+    (baseTutorProfile.email || '').toLowerCase().includes('hailu') ||
+    (currentUser?.email ? currentUser.email.toLowerCase().includes('esayas') || currentUser.email.toLowerCase().includes('hailu') : false) ||
+    ((baseTutorProfile.university || '').toLowerCase().includes('addis ababa university') &&
+      (baseTutorProfile.department || '').toLowerCase().includes('physics')) ||
+    ((baseTutorProfile.university || '').toLowerCase().includes('aau') &&
+      (baseTutorProfile.department || '').toLowerCase().includes('physics'));
+
+  const displayName = isPersonal ? 'Pro Tutorial Service' : baseTutorProfile.fullName;
+  const displayUniversityAndDept = isPersonal
+    ? 'Professional Tutoring Services | KG–Grade 12'
+    : `${baseTutorProfile.university} · ${baseTutorProfile.department}`;
+  const displayAvatar = isPersonal ? '/logo.svg' : (baseTutorProfile.avatar || '/logo.svg');
 
   const [isEditing, setIsEditing] = useState(false);
-  const [bio, setBio] = useState(tutorProfile.bio);
+  const [profileName, setProfileName] = useState(displayName);
+  const [university, setUniversity] = useState(isPersonal ? 'Professional Tutoring Services' : baseTutorProfile.university);
+  const [department, setDepartment] = useState(isPersonal ? 'KG–Grade 12' : baseTutorProfile.department);
+  const [bio, setBio] = useState(baseTutorProfile.bio);
   const [weeklyAvailability, setWeeklyAvailability] = useState(
-    tutorProfile.weeklyAvailability.join(', ')
+    baseTutorProfile.weeklyAvailability.join(', ')
   );
 
-  const assignedSessions = sessions.filter((s) => s.tutorId === tutorProfile.id);
+  const assignedSessions = sessions.filter((s) => s.tutorId === baseTutorProfile.id);
 
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
-    updateTutorProfile(tutorProfile.id, {
+    const cleanName =
+      profileName.toLowerCase().includes('esayas') || profileName.toLowerCase().includes('hailu')
+        ? 'Pro Tutorial Service'
+        : profileName.trim() || 'Pro Tutorial Service';
+    const cleanUni =
+      university.toLowerCase().includes('addis ababa university') && department.toLowerCase().includes('physics')
+        ? 'Professional Tutoring Services'
+        : university.trim() || 'Professional Tutoring Services';
+    const cleanDept =
+      university.toLowerCase().includes('addis ababa university') && department.toLowerCase().includes('physics')
+        ? 'KG–Grade 12'
+        : department.trim() || 'KG–Grade 12';
+
+    updateTutorProfile(baseTutorProfile.id, {
+      fullName: cleanName,
+      university: cleanUni,
+      department: cleanDept,
+      avatar: isPersonal ? '/logo.svg' : baseTutorProfile.avatar,
       bio,
       weeklyAvailability: weeklyAvailability.split(',').map((s) => s.trim()),
     });
+    setProfileName(cleanName);
+    setUniversity(cleanUni);
+    setDepartment(cleanDept);
     setIsEditing(false);
   };
 
@@ -45,58 +86,65 @@ export const TutorDashboard: React.FC = () => {
       <div className="bg-gradient-to-r from-[#0D3B66] to-[#0A2540] text-white rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-md">
         <div className="flex items-center gap-4">
           <img
-            src={tutorProfile.avatar}
-            alt={tutorProfile.fullName}
+            src={displayAvatar}
+            alt={displayName}
             referrerPolicy="no-referrer"
             className="w-16 h-16 rounded-2xl object-cover border-2 border-white/20 bg-slate-800"
           />
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight">
-                {tutorProfile.fullName}
+                {displayName}
               </h1>
-              {tutorProfile.verificationStatus === 'approved' && (
+              {baseTutorProfile.verificationStatus === 'approved' && (
                 <span className="text-xs bg-[#06B6D4]/20 text-[#06B6D4] px-2 py-0.5 rounded font-bold border border-[#06B6D4]/40">
                   Verified Tutor
                 </span>
               )}
             </div>
             <p className="text-xs text-blue-200 mt-0.5">
-              {tutorProfile.university} · {tutorProfile.department}
+              {displayUniversityAndDept}
             </p>
           </div>
         </div>
 
         <button
-          onClick={() => setIsEditing(!isEditing)}
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs transition-colors self-start md:self-auto"
+          onClick={() => {
+            if (!isEditing) {
+              setProfileName(displayName);
+              setUniversity(isPersonal ? 'Professional Tutoring Services' : baseTutorProfile.university);
+              setDepartment(isPersonal ? 'KG–Grade 12' : baseTutorProfile.department);
+            }
+            setIsEditing(!isEditing);
+          }}
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs transition-colors self-start md:self-auto cursor-pointer"
         >
           <Edit3 className="w-3.5 h-3.5" />
-          <span>{isEditing ? 'Cancel Editing' : 'Edit Availability & Bio'}</span>
+          <span>{isEditing ? 'Cancel Editing' : 'Edit Profile & Availability'}</span>
         </button>
       </div>
 
       {/* Verification Status Banner */}
       <div
         className={`p-4 rounded-2xl border text-xs flex items-center justify-between gap-3 ${
-          tutorProfile.verificationStatus === 'approved'
+          baseTutorProfile.verificationStatus === 'approved'
             ? 'bg-emerald-50 border-emerald-200 text-emerald-900'
-            : tutorProfile.verificationStatus === 'pending'
+            : baseTutorProfile.verificationStatus === 'pending'
             ? 'bg-amber-50 border-amber-200 text-amber-900'
             : 'bg-blue-50 border-blue-200 text-blue-900'
         }`}
       >
         <div className="flex items-center gap-2.5">
-          {tutorProfile.verificationStatus === 'approved' ? (
+          {baseTutorProfile.verificationStatus === 'approved' ? (
             <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
           ) : (
             <AlertCircle className="w-5 h-5 text-amber-600 shrink-0" />
           )}
           <div>
             <span className="font-bold">Application Status: </span>
-            <span className="capitalize">{tutorProfile.verificationStatus.replace('_', ' ')}</span>
+            <span className="capitalize">{baseTutorProfile.verificationStatus.replace('_', ' ')}</span>
             <p className="text-[11px] text-slate-600 mt-0.5">
-              {tutorProfile.verificationStatus === 'approved'
+              {baseTutorProfile.verificationStatus === 'approved'
                 ? 'Your profile is fully verified and listed on our public directory. You are eligible for family matching.'
                 : 'Our academic administrators are reviewing your submitted transcripts. We will notify you once approved.'}
             </p>
@@ -104,7 +152,7 @@ export const TutorDashboard: React.FC = () => {
         </div>
 
         <span className="text-xs font-bold shrink-0">
-          Fee: {tutorProfile.hourlyServiceFeeETB} ETB
+          Fee: {baseTutorProfile.hourlyServiceFeeETB} ETB
         </span>
       </div>
 
@@ -115,9 +163,49 @@ export const TutorDashboard: React.FC = () => {
           className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4 text-xs"
         >
           <h3 className="text-sm font-bold text-slate-900">Edit Profile & Availability</h3>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label className="block font-bold text-slate-700 mb-1">
+                Display / Business Name
+              </label>
+              <input
+                type="text"
+                value={profileName}
+                onChange={(e) => setProfileName(e.target.value)}
+                placeholder="Pro Tutorial Service"
+                className="w-full p-2.5 rounded-xl border border-slate-300"
+              />
+            </div>
+            <div>
+              <label className="block font-bold text-slate-700 mb-1">
+                Service Focus / Institution
+              </label>
+              <input
+                type="text"
+                value={university}
+                onChange={(e) => setUniversity(e.target.value)}
+                placeholder="Professional Tutoring Services"
+                className="w-full p-2.5 rounded-xl border border-slate-300"
+              />
+            </div>
+            <div>
+              <label className="block font-bold text-slate-700 mb-1">
+                Grade Levels / Scope
+              </label>
+              <input
+                type="text"
+                value={department}
+                onChange={(e) => setDepartment(e.target.value)}
+                placeholder="KG–Grade 12"
+                className="w-full p-2.5 rounded-xl border border-slate-300"
+              />
+            </div>
+          </div>
+
           <div>
             <label className="block font-bold text-slate-700 mb-1">
-              Professional Biography
+              Professional Biography & Overview
             </label>
             <textarea
               rows={3}
@@ -140,7 +228,7 @@ export const TutorDashboard: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="px-5 py-2 bg-[#0D3B66] text-white font-bold rounded-xl hover:bg-[#1E3A8A]"
+            className="px-5 py-2 bg-[#0D3B66] text-white font-bold rounded-xl hover:bg-[#1E3A8A] cursor-pointer"
           >
             Save Changes
           </button>
@@ -209,14 +297,14 @@ export const TutorDashboard: React.FC = () => {
           <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs space-y-4">
             <h3 className="text-sm font-bold text-slate-900">Teaching Profile Summary</h3>
             <div className="space-y-2 text-xs text-slate-600">
-              <p><strong>Subjects:</strong> {tutorProfile.subjects.join(', ')}</p>
-              <p><strong>Grades:</strong> {tutorProfile.gradeLevels.join(', ')}</p>
-              <p><strong>Locations:</strong> {tutorProfile.cities.join(', ')}</p>
-              <p><strong>Experience:</strong> {tutorProfile.experienceYears} Years</p>
-              {tutorProfile.rating > 0 && (
+              <p><strong>Subjects:</strong> {baseTutorProfile.subjects.join(', ')}</p>
+              <p><strong>Grades:</strong> {baseTutorProfile.gradeLevels.join(', ')}</p>
+              <p><strong>Locations:</strong> {baseTutorProfile.cities.join(', ')}</p>
+              <p><strong>Experience:</strong> {baseTutorProfile.experienceYears} Years</p>
+              {baseTutorProfile.rating > 0 && (
                 <p className="flex items-center gap-1 font-semibold text-slate-900">
                   <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                  <span>{tutorProfile.rating.toFixed(1)} rating ({tutorProfile.reviewCount} reviews)</span>
+                  <span>{baseTutorProfile.rating.toFixed(1)} rating ({baseTutorProfile.reviewCount} reviews)</span>
                 </p>
               )}
             </div>

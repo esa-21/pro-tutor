@@ -131,6 +131,7 @@ function saveToStorage<T>(key: string, value: T) {
 const getInitialRoute = (): string => {
   if (typeof window !== 'undefined') {
     const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    if (!path) return 'home';
     const validRoutes = [
       'about',
       'services',
@@ -156,8 +157,21 @@ const getInitialRoute = (): string => {
       'admin-dashboard',
     ];
     if (validRoutes.includes(path)) return path;
+    return 'home';
   }
-  return loadFromStorage<string>('route', 'home');
+  return 'home';
+};
+
+export const isPersonalIdentity = (name?: string, email?: string): boolean => {
+  const n = (name || '').toLowerCase();
+  const e = (email || '').toLowerCase();
+  return (
+    n.includes('esayas') ||
+    n.includes('hailu') ||
+    e.includes('esayas') ||
+    e.includes('hailu') ||
+    e.includes('2124')
+  );
 };
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -167,8 +181,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [activeRoute, setActiveRouteState] = useState<string>(getInitialRoute);
   const [currentUser, setCurrentUser] = useState<User | null>(() => {
     const loaded = loadFromStorage<User | null>('currentUser', INITIAL_USERS[0]);
-    if (loaded && loaded.role === 'admin' && (loaded.name.includes('Esayas') || loaded.name.includes('Hailu'))) {
-      return { ...loaded, name: 'PRO TUTORIAL' };
+    if (loaded && isPersonalIdentity(loaded.name, loaded.email)) {
+      return { ...loaded, name: 'Pro Tutorial Service' };
     }
     return loaded;
   });
@@ -176,14 +190,31 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [users, setUsers] = useState<User[]>(() => {
     const loaded = loadFromStorage<User[]>('users', INITIAL_USERS);
     return loaded.map((u) =>
-      u.role === 'admin' && (u.name.includes('Esayas') || u.name.includes('Hailu'))
-        ? { ...u, name: 'PRO TUTORIAL' }
+      isPersonalIdentity(u.name, u.email)
+        ? { ...u, name: 'Pro Tutorial Service' }
         : u
     );
   });
-  const [tutors, setTutors] = useState<TutorProfile[]>(() =>
-    loadFromStorage<TutorProfile[]>('tutors', INITIAL_TUTORS)
-  );
+  const [tutors, setTutors] = useState<TutorProfile[]>(() => {
+    const loaded = loadFromStorage<TutorProfile[]>('tutors', INITIAL_TUTORS);
+    return loaded.map((t) => {
+      const isPersonal =
+        isPersonalIdentity(t.fullName, t.email) ||
+        (t.university.toLowerCase().includes('addis ababa university') &&
+          t.department.toLowerCase().includes('physics'));
+      if (isPersonal) {
+        return {
+          ...t,
+          fullName: 'Pro Tutorial Service',
+          university: 'Professional Tutoring Services',
+          department: 'KG–Grade 12',
+          academicStatus: 'Professional Tutoring Services | KG–Grade 12',
+          avatar: '/logo.svg',
+        };
+      }
+      return t;
+    });
+  });
   const [requests, setRequests] = useState<TutorRequest[]>(() =>
     loadFromStorage<TutorRequest[]>('requests', INITIAL_REQUESTS)
   );
@@ -208,8 +239,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>(() => {
     const loaded = loadFromStorage<AuditLog[]>('auditLogs', INITIAL_AUDIT_LOGS);
     return loaded.map((l) =>
-      l.adminName.includes('Esayas') || l.adminName.includes('Hailu')
-        ? { ...l, adminName: 'PRO TUTORIAL' }
+      isPersonalIdentity(l.adminName, l.adminEmail)
+        ? { ...l, adminName: 'Pro Tutorial Service', adminEmail: 'admin@protutorial.et' }
         : l
     );
   });
@@ -264,10 +295,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     targetId: string,
     details: string
   ) => {
+    const isPersonal = isPersonalIdentity(currentUser?.name, currentUser?.email);
     const newLog: AuditLog = {
       id: 'log-' + Date.now(),
-      adminName: currentUser?.name || 'Administrator',
-      adminEmail: currentUser?.email || 'admin@protutorial.et',
+      adminName: isPersonal ? 'Pro Tutorial Service' : currentUser?.name || 'Pro Tutorial Service',
+      adminEmail: isPersonal ? 'admin@protutorial.et' : currentUser?.email || 'admin@protutorial.et',
       action,
       targetType,
       targetId,
@@ -296,8 +328,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   const loginAs = (user: User) => {
-    setCurrentUser(user);
-    if (user.role === 'admin') {
+    const safeUser = isPersonalIdentity(user.name, user.email)
+      ? { ...user, name: 'Pro Tutorial Service' }
+      : user;
+    setCurrentUser(safeUser);
+    if (safeUser.role === 'admin') {
       setActiveRoute('admin-dashboard');
     } else {
       setActiveRoute('dashboard');
@@ -305,19 +340,24 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   const loginWithEmail = (email: string, preferredRole?: UserRole) => {
+    const cleanEmail = email.trim();
     const matched = users.find(
-      (u) => u.email.toLowerCase() === email.trim().toLowerCase()
+      (u) => u.email.toLowerCase() === cleanEmail.toLowerCase()
     );
     if (matched) {
-      setCurrentUser(matched);
-      setActiveRoute(matched.role === 'admin' ? 'admin-dashboard' : 'dashboard');
+      const safeUser = isPersonalIdentity(matched.name, matched.email)
+        ? { ...matched, name: 'Pro Tutorial Service' }
+        : matched;
+      setCurrentUser(safeUser);
+      setActiveRoute(safeUser.role === 'admin' ? 'admin-dashboard' : 'dashboard');
       return true;
     }
     // Create new login session if email is not pre-registered
+    const isPersonal = isPersonalIdentity('', cleanEmail);
     const newUser: User = {
       id: 'user-' + Date.now(),
-      name: email.split('@')[0],
-      email: email.trim(),
+      name: isPersonal ? 'Pro Tutorial Service' : cleanEmail.split('@')[0],
+      email: cleanEmail,
       role: preferredRole || 'student',
       createdAt: new Date().toISOString().split('T')[0],
       city: 'Addis Ababa',
@@ -342,11 +382,13 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     subCity?: string,
     extraFields?: Record<string, unknown>
   ): User => {
+    const isPersonal = isPersonalIdentity(name, email);
+    const finalName = isPersonal ? 'Pro Tutorial Service' : name.trim();
     const newUser: User = {
       id: 'user-' + Date.now(),
-      name,
-      email,
-      phone,
+      name: finalName,
+      email: email.trim(),
+      phone: phone.trim(),
       role,
       city,
       subCity,
@@ -356,20 +398,28 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     setCurrentUser(newUser);
 
     if (role === 'tutor') {
+      const uni = (extraFields?.university as string) || '';
+      const dept = (extraFields?.department as string) || '';
+      const isPersonalEdu =
+        isPersonal ||
+        (uni.toLowerCase().includes('addis ababa university') && dept.toLowerCase().includes('physics'));
+
       // Create pending tutor profile
       const newTutor: TutorProfile = {
         id: 'tut-' + Date.now(),
         userId: newUser.id,
-        fullName: name,
-        email,
-        phone,
-        avatar: '/src/assets/images/tutor_male_instructor_1791018914380.jpg',
+        fullName: finalName,
+        email: email.trim(),
+        phone: phone.trim(),
+        avatar: isPersonalEdu ? '/logo.svg' : '/src/assets/images/tutor_male_instructor_1791018914380.jpg',
         gender: (extraFields?.gender as 'male' | 'female' | 'other') || 'female',
-        university: (extraFields?.university as string) || 'Addis Ababa University',
-        department: (extraFields?.department as string) || 'General Education',
-        academicStatus: (extraFields?.academicStatus as string) || 'Degree Graduate',
-        experienceYears: Number(extraFields?.experienceYears || 1),
-        gradeLevels: (extraFields?.gradeLevels as string[]) || ['Grades 5–8'],
+        university: isPersonalEdu ? 'Professional Tutoring Services' : uni || 'Certified Higher Institution',
+        department: isPersonalEdu ? 'KG–Grade 12' : dept || 'General Education',
+        academicStatus: isPersonalEdu
+          ? 'Professional Tutoring Services | KG–Grade 12'
+          : (extraFields?.academicStatus as string) || 'Degree Graduate',
+        experienceYears: Number(extraFields?.experienceYears || 2),
+        gradeLevels: (extraFields?.gradeLevels as string[]) || ['Grades 5–8', 'Grades 9–12'],
         subjects: (extraFields?.subjects as string[]) || ['Mathematics'],
         cities: [city],
         subCities: subCity ? [subCity] : ['Bole'],
@@ -388,7 +438,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       notifyUser(
         'user-admin-1',
         'New Tutor Application Submitted',
-        `${name} has registered and submitted an application for review.`,
+        `${finalName} has registered and submitted an application for review.`,
         'request'
       );
     }
@@ -396,7 +446,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     notifyUser(
       newUser.id,
       'Welcome to Pro Tutorial Service',
-      `Welcome ${name}! Your account has been created. Explore available tutors or post a tutorial request.`,
+      `Welcome ${finalName}! Your account has been created. Explore available tutors or post a tutorial request.`,
       'system'
     );
 
@@ -601,7 +651,28 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const updateTutorProfile = (tutorId: string, updates: Partial<TutorProfile>) => {
     setTutors((prev) =>
-      prev.map((t) => (t.id === tutorId ? { ...t, ...updates } : t))
+      prev.map((t) => {
+        if (t.id === tutorId) {
+          const updated = { ...t, ...updates };
+          if (isPersonalIdentity(updated.fullName, updated.email)) {
+            updated.fullName = 'Pro Tutorial Service';
+            updated.avatar = '/logo.svg';
+          }
+          if (
+            (updated.university.toLowerCase().includes('addis ababa university') &&
+              updated.department.toLowerCase().includes('physics')) ||
+            (updated.university.toLowerCase().includes('aau') &&
+              updated.department.toLowerCase().includes('physics'))
+          ) {
+            updated.university = 'Professional Tutoring Services';
+            updated.department = 'KG–Grade 12';
+            updated.academicStatus = 'Professional Tutoring Services | KG–Grade 12';
+            updated.avatar = '/logo.svg';
+          }
+          return updated;
+        }
+        return t;
+      })
     );
   };
 

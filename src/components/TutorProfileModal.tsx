@@ -24,6 +24,23 @@ export const TutorProfileModal: React.FC = () => {
   if (!selectedTutorModal) return null;
   const tutor = selectedTutorModal;
 
+  const isPersonal =
+    (tutor.fullName || '').toLowerCase().includes('esayas') ||
+    (tutor.fullName || '').toLowerCase().includes('hailu') ||
+    (tutor.email || '').toLowerCase().includes('esayas') ||
+    (tutor.email || '').toLowerCase().includes('hailu') ||
+    (tutor.university.toLowerCase().includes('addis ababa university') &&
+      tutor.department.toLowerCase().includes('physics')) ||
+    (tutor.university.toLowerCase().includes('aau') &&
+      tutor.department.toLowerCase().includes('physics'));
+
+  const displayName = isPersonal ? 'Pro Tutorial Service' : tutor.fullName;
+  const displayAvatar = isPersonal ? '/logo.svg' : (tutor.avatar || '/logo.svg');
+  const displayAcademic = isPersonal
+    ? 'Professional Tutoring Services | KG–Grade 12'
+    : `${tutor.academicStatus} · ${tutor.department}`;
+  const displayUni = isPersonal ? 'Professional Tutoring Services' : tutor.university;
+
   const handleBook = () => {
     setPrefilledRequestData({
       subjects: tutor.subjects.slice(0, 2),
@@ -50,8 +67,8 @@ export const TutorProfileModal: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
             <div className="relative">
               <img
-                src={tutor.avatar}
-                alt={tutor.fullName}
+                src={displayAvatar}
+                alt={displayName}
                 referrerPolicy="no-referrer"
                 className="w-24 h-24 rounded-2xl object-cover border-2 border-white/20 bg-slate-800 shadow-md"
               />
@@ -65,7 +82,7 @@ export const TutorProfileModal: React.FC = () => {
             <div className="text-center sm:text-left flex-1">
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
                 <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight">
-                  {tutor.fullName}
+                  {displayName}
                 </h2>
                 {tutor.verificationStatus === 'approved' && (
                   <span className="text-xs font-semibold text-[#06B6D4] bg-[#06B6D4]/15 px-2.5 py-0.5 rounded-full border border-[#06B6D4]/30">
@@ -75,13 +92,13 @@ export const TutorProfileModal: React.FC = () => {
               </div>
 
               <p className="text-sm text-blue-200 font-medium mt-1">
-                {tutor.academicStatus} · {tutor.department}
+                {displayAcademic}
               </p>
 
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 mt-3 text-xs text-slate-300">
                 <span className="flex items-center gap-1">
                   <GraduationCap className="w-4 h-4 text-[#06B6D4]" />
-                  <span>{tutor.university}</span>
+                  <span>{displayUni}</span>
                 </span>
                 <span className="flex items-center gap-1">
                   <Award className="w-4 h-4 text-amber-400" />

@@ -183,26 +183,38 @@ export const Header: React.FC = () => {
           {/* User Account / Login Button */}
           {currentUser ? (
             <div className="relative">
-              <button
-                onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
-              >
-                <div className="w-6 h-6 rounded-full bg-[#0D3B66] text-white flex items-center justify-center text-[11px] font-bold">
-                  {currentUser.name.charAt(0)}
-                </div>
-                <span className="hidden sm:inline max-w-28 truncate">{currentUser.name}</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
-              </button>
+              {(() => {
+                const isPersonal =
+                  currentUser.name.toLowerCase().includes('esayas') ||
+                  currentUser.name.toLowerCase().includes('hailu') ||
+                  currentUser.email.toLowerCase().includes('esayas') ||
+                  currentUser.email.toLowerCase().includes('hailu') ||
+                  currentUser.email.toLowerCase().includes('2124');
+                const userDisplayName = isPersonal ? 'Pro Tutorial Service' : currentUser.name;
+                const userDisplayEmail = isPersonal ? 'Pro Tutorial Service' : currentUser.email;
 
-              {userDropdownOpen && (
-                <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-50">
-                  <div className="px-4 py-2 border-b border-slate-100">
-                    <p className="text-xs font-bold text-slate-900 truncate">{currentUser.name}</p>
-                    <p className="text-[11px] text-slate-500 truncate">{currentUser.email}</p>
-                    <span className="inline-block mt-1 text-[10px] uppercase font-bold tracking-wider text-[#16A34A] bg-[#16A34A]/10 px-2 py-0.5 rounded">
-                      Role: {currentUser.role}
-                    </span>
-                  </div>
+                return (
+                  <>
+                    <button
+                      onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                      className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-[#0D3B66] text-white flex items-center justify-center text-[11px] font-bold">
+                        {userDisplayName.charAt(0)}
+                      </div>
+                      <span className="hidden sm:inline max-w-28 truncate">{userDisplayName}</span>
+                      <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                    </button>
+
+                    {userDropdownOpen && (
+                      <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-50">
+                        <div className="px-4 py-2 border-b border-slate-100">
+                          <p className="text-xs font-bold text-slate-900 truncate">{userDisplayName}</p>
+                          <p className="text-[11px] text-slate-500 truncate">{userDisplayEmail}</p>
+                          <span className="inline-block mt-1 text-[10px] uppercase font-bold tracking-wider text-[#16A34A] bg-[#16A34A]/10 px-2 py-0.5 rounded">
+                            Role: {currentUser.role}
+                          </span>
+                        </div>
 
                   {currentUser.role === 'admin' && (
                     <button
@@ -236,7 +248,10 @@ export const Header: React.FC = () => {
                   </button>
                 </div>
               )}
-            </div>
+            </>
+          );
+        })()}
+      </div>
           ) : (
             <div className="flex items-center gap-2">
               <button

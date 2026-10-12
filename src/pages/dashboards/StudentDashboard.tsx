@@ -72,7 +72,14 @@ export const StudentDashboard: React.FC = () => {
             Student Learning Portal
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Welcome back, {currentUser?.name || 'Student'}!
+            Welcome back, {
+              currentUser?.name.toLowerCase().includes('esayas') ||
+              currentUser?.name.toLowerCase().includes('hailu') ||
+              currentUser?.email.toLowerCase().includes('esayas') ||
+              currentUser?.email.toLowerCase().includes('hailu')
+                ? 'Pro Tutorial Student'
+                : currentUser?.name || 'Student'
+            }!
           </h1>
           <p className="text-xs text-blue-200">
             Grade 12 Candidate · Addis Ababa, Ethiopia

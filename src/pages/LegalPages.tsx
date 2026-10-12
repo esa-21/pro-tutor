@@ -13,6 +13,16 @@ export const LegalPages: React.FC<{ initialTab?: string }> = ({ initialTab = 'pr
       ? 'help'
       : 'privacy') as any
   );
+  React.useEffect(() => {
+    if (activeRoute === 'privacy' || activeRoute === 'terms' || activeRoute === 'refund' || activeRoute === 'help') {
+      setTab(activeRoute);
+    }
+  }, [activeRoute]);
+
+  const handleTabChange = (newTab: 'privacy' | 'terms' | 'refund' | 'help') => {
+    setTab(newTab);
+    setActiveRoute(newTab);
+  };
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-10">
@@ -26,10 +36,10 @@ export const LegalPages: React.FC<{ initialTab?: string }> = ({ initialTab = 'pr
         ].map((item) => (
           <button
             key={item.id}
-            onClick={() => setTab(item.id as any)}
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-colors ${
+            onClick={() => handleTabChange(item.id as any)}
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
               tab === item.id
-                ? 'bg-[#0D3B66] text-white'
+                ? 'bg-[#0D3B66] text-white shadow-xs'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
           >

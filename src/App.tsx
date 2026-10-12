@@ -28,9 +28,14 @@ import { StudentDashboard } from './pages/dashboards/StudentDashboard';
 import { ParentDashboard } from './pages/dashboards/ParentDashboard';
 import { TutorDashboard } from './pages/dashboards/TutorDashboard';
 import { AdminDashboard } from './pages/dashboards/AdminDashboard';
+import { updatePageSEO } from './utils/seo';
 
 const AppContent: React.FC = () => {
   const { activeRoute, currentUser } = useApp();
+
+  React.useEffect(() => {
+    updatePageSEO(activeRoute);
+  }, [activeRoute]);
 
   const renderCurrentView = () => {
     switch (activeRoute) {

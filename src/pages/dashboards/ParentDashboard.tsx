@@ -98,7 +98,14 @@ export const ParentDashboard: React.FC = () => {
             Family Management Portal
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Welcome, {currentUser?.name || 'Parent'}!
+            Welcome, {
+              currentUser?.name.toLowerCase().includes('esayas') ||
+              currentUser?.name.toLowerCase().includes('hailu') ||
+              currentUser?.email.toLowerCase().includes('esayas') ||
+              currentUser?.email.toLowerCase().includes('hailu')
+                ? 'Pro Tutorial Family'
+                : currentUser?.name || 'Parent'
+            }!
           </h1>
           <p className="text-xs text-blue-200">
             Managing academic progress & verified tutors across your children.
