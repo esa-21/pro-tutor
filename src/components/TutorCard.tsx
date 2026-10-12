@@ -5,9 +5,15 @@ import { CheckCircle2, Star, MapPin, Clock, BookOpen, GraduationCap } from 'luci
 
 interface TutorCardProps {
   tutor: TutorProfile;
+  selectedSubject?: string;
+  selectedLevel?: string;
 }
 
-export const TutorCard: React.FC<TutorCardProps> = ({ tutor }) => {
+export const TutorCard: React.FC<TutorCardProps> = ({
+  tutor,
+  selectedSubject,
+  selectedLevel,
+}) => {
   const { setSelectedTutorModal, setRequestModalOpen, setPrefilledRequestData } = useApp();
 
   const isPersonal =
@@ -30,7 +36,9 @@ export const TutorCard: React.FC<TutorCardProps> = ({ tutor }) => {
   const handleRequest = (e: React.MouseEvent) => {
     e.stopPropagation();
     setPrefilledRequestData({
-      subjects: tutor.subjects.slice(0, 2),
+      subjects: selectedSubject && tutor.subjects.includes(selectedSubject)
+        ? [selectedSubject, ...tutor.subjects.filter((s) => s !== selectedSubject).slice(0, 1)]
+        : tutor.subjects.slice(0, 2),
       proposedTutorId: tutor.id,
       city: tutor.cities[0] || 'Addis Ababa',
     });
@@ -92,10 +100,32 @@ export const TutorCard: React.FC<TutorCardProps> = ({ tutor }) => {
 
         {/* Subjects & Metadata (Constitution: Zero-Pill Discipline, text with separators) */}
         <div className="mt-4 pt-3.5 border-t border-slate-100 space-y-2">
+          {/* Subjects */}
           <div className="flex items-center gap-1.5 text-xs text-slate-600">
             <BookOpen className="w-3.5 h-3.5 text-[#2563EB] shrink-0" />
             <span className="font-semibold text-slate-800">Subjects:</span>
-            <span className="truncate font-medium">{tutor.subjects.join(', ')}</span>
+            <span className="truncate font-medium">
+              {tutor.subjects.map((s, idx) => {
+                const isMatch = selectedSubject && s.toLowerCase() === selectedSubject.toLowerCase();
+                return (
+                  <span key={s}>
+                    {idx > 0 && ', '}
+                    <span className={isMatch ? 'text-[#2563EB] font-bold underline decoration-blue-300' : ''}>
+                      {s}
+                    </span>
+                  </span>
+                );
+              })}
+            </span>
+          </div>
+
+          {/* Educational Levels */}
+          <div className="flex items-center gap-1.5 text-xs text-slate-600">
+            <GraduationCap className="w-3.5 h-3.5 text-[#0D3B66] shrink-0" />
+            <span className="font-semibold text-slate-800">Levels:</span>
+            <span className="truncate font-medium text-slate-700">
+              {tutor.gradeLevels.join(' · ')}
+            </span>
           </div>
 
           {/* Location & Format */}

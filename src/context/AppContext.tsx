@@ -197,7 +197,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   });
   const [tutors, setTutors] = useState<TutorProfile[]>(() => {
     const loaded = loadFromStorage<TutorProfile[]>('tutors', INITIAL_TUTORS);
-    return loaded.map((t) => {
+    const existingIds = new Set(loaded.map((t) => t.id));
+    const merged = [...loaded];
+    INITIAL_TUTORS.forEach((initTutor) => {
+      if (!existingIds.has(initTutor.id)) {
+        merged.push(initTutor);
+      }
+    });
+    return merged.map((t) => {
       const isPersonal =
         isPersonalIdentity(t.fullName, t.email) ||
         (t.university.toLowerCase().includes('addis ababa university') &&
