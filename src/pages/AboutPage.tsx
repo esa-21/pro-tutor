@@ -214,7 +214,7 @@ export const AboutPage: React.FC = () => {
         </span>
         <h3 className="text-2xl sm:text-3xl font-extrabold">Empower Your Child&apos;s Academic Journey</h3>
         <p className="text-xs sm:text-sm text-blue-100/90 max-w-md mx-auto">
-          Connect with our team via Telegram channel <strong>@pro_tutorial21241</strong>, group <strong>@pro_tutorial2124</strong>, or request a tutor through our interactive finder.
+          Connect with our team via Telegram channel <strong>@prohometutor1</strong>, group <strong>@prohometutor2</strong>, or request a tutor through our interactive finder.
         </p>
         <div className="pt-2 flex justify-center gap-3">
           <button

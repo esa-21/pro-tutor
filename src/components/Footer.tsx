@@ -38,27 +38,27 @@ export const Footer: React.FC = () => {
                 Join our Telegram Community &amp; Connect Directly
               </p>
               <p className="text-blue-200 text-xs">
-                Channel: @pro_tutorial21241 · Group: @pro_tutorial2124 · Direct Contact: @pr_tutor12
+                Channel: @prohometutor1 · Group: @prohometutor2 · Direct Contact: @pr_tutor12
               </p>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2.5">
             <a
-              href="https://t.me/pro_tutorial21241"
+              href="https://t.me/prohometutor1"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#F25C54] hover:bg-[#e04a42] text-white font-bold text-xs shadow-md transition-colors"
             >
-              <span>Channel @pro_tutorial21241</span>
+              <span>Channel @prohometutor1</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
             <a
-              href="https://t.me/pro_tutorial2124"
+              href="https://t.me/prohometutor2"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs border border-white/20 transition-colors"
             >
-              <span>Group @pro_tutorial2124</span>
+              <span>Group @prohometutor2</span>
             </a>
             <a
               href="https://t.me/pr_tutor12"
@@ -100,11 +100,11 @@ export const Footer: React.FC = () => {
             <div className="space-y-2 pt-2 text-xs">
               <div className="flex items-center gap-2 text-blue-100">
                 <Send className="w-4 h-4 text-[#F4B400] shrink-0" />
-                <span>Telegram Channel: <a href="https://t.me/pro_tutorial21241" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F4B400] font-semibold underline">@pro_tutorial21241</a></span>
+                <span>Telegram Channel: <a href="https://t.me/prohometutor1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F4B400] font-semibold underline">@prohometutor1</a></span>
               </div>
               <div className="flex items-center gap-2 text-blue-100">
                 <Send className="w-4 h-4 text-[#F4B400] shrink-0" />
-                <span>Telegram Group: <a href="https://t.me/pro_tutorial2124" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F4B400] font-semibold underline">@pro_tutorial2124</a></span>
+                <span>Telegram Group: <a href="https://t.me/prohometutor2" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F4B400] font-semibold underline">@prohometutor2</a></span>
               </div>
               <div className="flex items-center gap-2 text-blue-100">
                 <Send className="w-4 h-4 text-[#F4B400] shrink-0" />
@@ -128,34 +128,76 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs text-blue-100/80">
               <li>
-                <button onClick={() => setActiveRoute('find-tutor')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/find-tutor"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('find-tutor');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   Find a Tutor
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveRoute('services')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('services');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   All Services (KG – Grade 12)
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveRoute('pricing')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/pricing"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('pricing');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   Pricing & Service Fees
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveRoute('how-it-works')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/how-it-works"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('how-it-works');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   How It Works
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveRoute('testimonials')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/testimonials"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('testimonials');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   Client Success Stories
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveRoute('become-tutor')} className="hover:text-white transition-colors text-[#F4B400] font-semibold cursor-pointer">
+                <a
+                  href="/become-tutor"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('become-tutor');
+                  }}
+                  className="hover:text-white transition-colors text-[#F4B400] font-semibold cursor-pointer block"
+                >
                   Become a Tutor
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -167,29 +209,64 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs text-blue-100/80">
               <li>
-                <button onClick={() => setActiveRoute('blog')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/blog"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('blog');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   Educational Blog & Guides
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveRoute('learning-tips')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/learning-tips"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('learning-tips');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   Student Learning Tips
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveRoute('faq')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/faq"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('faq');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   FAQ & Support Assistant
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveRoute('careers')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/careers"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('careers');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   Careers & Educator Recruitment
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveRoute('contact')} className="hover:text-white transition-colors cursor-pointer">
+                <a
+                  href="/contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('contact');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
                   Contact Us
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -248,17 +325,49 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
-            <button onClick={() => setActiveRoute('privacy')} className="hover:text-white transition-colors cursor-pointer">
+            <a
+              href="/privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveRoute('privacy');
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
               Privacy Policy
-            </button>
+            </a>
             <span>·</span>
-            <button onClick={() => setActiveRoute('terms')} className="hover:text-white transition-colors cursor-pointer">
+            <a
+              href="/terms"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveRoute('terms');
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
               Terms & Conditions
-            </button>
+            </a>
             <span>·</span>
-            <button onClick={() => setActiveRoute('refund')} className="hover:text-white transition-colors cursor-pointer">
+            <a
+              href="/refund"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveRoute('refund');
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
               Refund & Cancellation
-            </button>
+            </a>
+            <span>·</span>
+            <a
+              href="/help"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveRoute('help');
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Help Center
+            </a>
           </div>
         </div>
       </div>

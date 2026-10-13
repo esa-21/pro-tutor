@@ -4,7 +4,11 @@ Allow: /
 
 # Disallow private user accounts and admin dashboard routes from indexing
 Disallow: /login
+Disallow: /register
 Disallow: /dashboard
+Disallow: /student-dashboard
+Disallow: /parent-dashboard
+Disallow: /tutor-dashboard
 Disallow: /admin-dashboard
 Disallow: /student-register
 Disallow: /parent-register

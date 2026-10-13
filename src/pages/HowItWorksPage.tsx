@@ -89,7 +89,7 @@ export const HowItWorksPage: React.FC = () => {
 
         <div className="pt-4 flex flex-wrap items-center justify-between gap-4">
           <p className="text-xs text-slate-500">
-            Need urgent assistance? Connect with our team on Telegram at channel <strong>@pro_tutorial21241</strong>, group <strong>@pro_tutorial2124</strong>, or directly at <strong>@pr_tutor12</strong>.
+            Need urgent assistance? Connect with our team on Telegram at channel <strong>@prohometutor1</strong>, group <strong>@prohometutor2</strong>, or directly at <strong>@pr_tutor12</strong>.
           </p>
           <button
             onClick={() => setInteractiveFinderOpen(true)}
@@ -158,12 +158,16 @@ export const HowItWorksPage: React.FC = () => {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => setActiveRoute('tutor-register')}
-              className="px-5 py-2.5 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl transition-all shadow-sm cursor-pointer"
+            <a
+              href="/tutor-register"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveRoute('tutor-register');
+              }}
+              className="px-5 py-2.5 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl transition-all shadow-sm cursor-pointer inline-block"
             >
               Online Registration
-            </button>
+            </a>
             <a
               href="https://t.me/pro_tutorbot"
               target="_blank"

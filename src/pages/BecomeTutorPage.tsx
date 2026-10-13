@@ -30,29 +30,33 @@ export const BecomeTutorPage: React.FC = () => {
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-3">
-            <button
-              onClick={() => setActiveRoute('tutor-register')}
-              className="px-6 py-3 rounded-xl bg-[#06B6D4] hover:bg-[#0891b2] text-slate-950 font-bold text-xs shadow-md transition-all"
+            <a
+              href="/tutor-register"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveRoute('tutor-register');
+              }}
+              className="px-6 py-3 rounded-xl bg-[#06B6D4] hover:bg-[#0891b2] text-slate-950 font-bold text-xs shadow-md transition-all inline-block cursor-pointer"
             >
               Start Online Application
-            </button>
-            <a
-              href="https://t.me/pro_tutorial21241"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors"
-            >
-              <Send className="w-4 h-4 text-[#06B6D4]" />
-              <span>Channel @pro_tutorial21241</span>
             </a>
             <a
-              href="https://t.me/pro_tutorial2124"
+              href="https://t.me/prohometutor1"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors"
             >
               <Send className="w-4 h-4 text-[#06B6D4]" />
-              <span>Group @pro_tutorial2124</span>
+              <span>Channel @prohometutor1</span>
+            </a>
+            <a
+              href="https://t.me/prohometutor2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors"
+            >
+              <Send className="w-4 h-4 text-[#06B6D4]" />
+              <span>Group @prohometutor2</span>
             </a>
             <a
               href="https://t.me/pr_tutor12"
@@ -77,26 +81,26 @@ export const BecomeTutorPage: React.FC = () => {
               Prefer applying through Telegram?
             </h4>
             <p className="text-xs text-slate-600">
-              Join channel <strong>@pro_tutorial21241</strong>, discussion group <strong>@pro_tutorial2124</strong>, or message coordinator directly at <strong>@pr_tutor12</strong>.
+              Join channel <strong>@prohometutor1</strong>, discussion group <strong>@prohometutor2</strong>, or message coordinator directly at <strong>@pr_tutor12</strong>.
             </p>
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <a
-            href="https://t.me/pro_tutorial21241"
+            href="https://t.me/prohometutor1"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2.5 rounded-xl bg-[#0D3B66] text-white font-bold text-xs hover:bg-[#1E3A8A] transition-colors shrink-0"
           >
-            Channel (@pro_tutorial21241)
+            Channel (@prohometutor1)
           </a>
           <a
-            href="https://t.me/pro_tutorial2124"
+            href="https://t.me/prohometutor2"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2.5 rounded-xl bg-[#06B6D4] text-slate-950 font-bold text-xs hover:bg-[#0891b2] transition-colors shrink-0"
           >
-            Group (@pro_tutorial2124)
+            Group (@prohometutor2)
           </a>
           <a
             href="https://t.me/pr_tutor12"
@@ -182,12 +186,16 @@ export const BecomeTutorPage: React.FC = () => {
         <p className="text-xs text-blue-200 max-w-md mx-auto">
           Applications are reviewed within 48 business hours by our coordination team.
         </p>
-        <button
-          onClick={() => setActiveRoute('tutor-register')}
-          className="px-6 py-2.5 rounded-xl bg-[#06B6D4] text-slate-950 font-bold text-xs hover:bg-[#0891b2] transition-colors"
+        <a
+          href="/tutor-register"
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveRoute('tutor-register');
+          }}
+          className="px-6 py-2.5 rounded-xl bg-[#06B6D4] text-slate-950 font-bold text-xs hover:bg-[#0891b2] transition-colors inline-block cursor-pointer"
         >
           Proceed to Tutor Registration Form
-        </button>
+        </a>
       </div>
     </div>
   );

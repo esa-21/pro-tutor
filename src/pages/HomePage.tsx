@@ -83,14 +83,18 @@ export const HomePage: React.FC = () => {
 
               {/* CTAs: Tomato primary CTA + Bright secondary CTA */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
-                <button
-                  onClick={() => setInteractiveFinderOpen(true)}
+                <a
+                  href="/find-tutor"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('find-tutor');
+                  }}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#F25C54] hover:bg-[#e04a42] text-white font-bold text-sm shadow-xl shadow-[#F25C54]/25 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                 >
                   <Compass className="w-4 h-4 text-white" />
                   <span>{t('findTutorCTA')}</span>
                   <ArrowRight className="w-4 h-4 text-white" />
-                </button>
+                </a>
 
                 <button
                   onClick={() => setRequestModalOpen(true)}
@@ -99,12 +103,16 @@ export const HomePage: React.FC = () => {
                   <span>Request a Tutor Directly</span>
                 </button>
 
-                <button
-                  onClick={() => setActiveRoute('become-tutor')}
+                <a
+                  href="/become-tutor"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('become-tutor');
+                  }}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 text-xs font-semibold text-[#F4B400] hover:text-white transition-colors cursor-pointer"
                 >
                   <span>{t('becomeTutorCTA')} →</span>
-                </button>
+                </a>
               </div>
 
               {/* Telegram quick option */}
@@ -113,24 +121,24 @@ export const HomePage: React.FC = () => {
                   <Send className="w-3.5 h-3.5 text-[#2563EB]" />
                   <span>Channel: </span>
                   <a
-                    href="https://t.me/pro_tutorial21241"
+                    href="https://t.me/prohometutor1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white font-bold underline hover:text-[#F4B400] transition-colors"
                   >
-                    @pro_tutorial21241
+                    @prohometutor1
                   </a>
                 </span>
                 <span aria-hidden="true" className="text-blue-300">·</span>
                 <span>
                   Group:{' '}
                   <a
-                    href="https://t.me/pro_tutorial2124"
+                    href="https://t.me/prohometutor2"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white font-bold underline hover:text-[#F4B400] transition-colors"
                   >
-                    @pro_tutorial2124
+                    @prohometutor2
                   </a>
                 </span>
                 <span aria-hidden="true" className="text-blue-300">·</span>
@@ -492,7 +500,7 @@ export const HomePage: React.FC = () => {
               Apply as a Tutor
             </button>
             <a
-              href="https://t.me/pro_tutorial21241"
+              href="https://t.me/prohometutor1"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3.5 py-2.5 text-xs font-bold text-[#0D3B66] bg-white border border-blue-200 rounded-xl hover:bg-blue-50 transition-colors flex items-center gap-1.5"
@@ -501,7 +509,7 @@ export const HomePage: React.FC = () => {
               <span>Channel</span>
             </a>
             <a
-              href="https://t.me/pro_tutorial2124"
+              href="https://t.me/prohometutor2"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3.5 py-2.5 text-xs font-bold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-1.5"
@@ -527,13 +535,17 @@ export const HomePage: React.FC = () => {
               Only verified university students and teachers with approved credentials appear in our directory.
             </p>
           </div>
-          <button
-            onClick={() => setActiveRoute('find-tutor')}
+          <a
+            href="/find-tutor"
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveRoute('find-tutor');
+            }}
             className="inline-flex items-center gap-1 text-xs font-bold text-[#0D3B66] hover:text-[#2563EB] cursor-pointer"
           >
             <span>Browse all available tutors</span>
             <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -889,7 +901,7 @@ export const HomePage: React.FC = () => {
             },
             {
               q: 'How can families submit a tutoring request or speak with a coordinator?',
-              a: 'You can submit a request directly through our online form on this website, use our interactive 5-Step Finder, or contact our coordinators via official Telegram (@pr_tutor12 or @pro_tutorial21241) and phone.',
+              a: 'You can submit a request directly through our online form on this website, use our interactive 5-Step Finder, or contact our coordinators via official Telegram (@pr_tutor12 or @prohometutor1) and phone.',
             },
           ].map((faq, idx) => {
             const isOpen = openFaqIndex === idx;

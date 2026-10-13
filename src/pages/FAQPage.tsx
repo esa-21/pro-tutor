@@ -54,7 +54,7 @@ const FAQS: FAQItem[] = [
   {
     cat: 'tutors',
     q: 'Can I apply or connect through Telegram?',
-    a: 'Yes! You can join our official Telegram channel at https://t.me/pro_tutorial21241 (@pro_tutorial21241), join our discussion group at https://t.me/pro_tutorial2124 (@pro_tutorial2124), message our coordinator directly at https://t.me/pr_tutor12 (@pr_tutor12), or apply through our bot at https://t.me/pro_tutorbot.',
+    a: 'Yes! You can join our official Telegram channel at https://t.me/prohometutor1 (@prohometutor1), join our discussion group at https://t.me/prohometutor2 (@prohometutor2), message our coordinator directly at https://t.me/pr_tutor12 (@pr_tutor12), or apply through our bot at https://t.me/pro_tutorbot.',
   },
 ];
 
@@ -127,7 +127,7 @@ export const FAQPage: React.FC = () => {
       <div className="space-y-3">
         {filteredFAQs.length === 0 ? (
           <div className="p-8 text-center bg-white rounded-2xl border border-slate-200 text-xs text-slate-500">
-            No specific FAQ matches your query. Contact our coordinator directly on Telegram at @pr_tutor12, or visit our channel @pro_tutorial21241 and group @pro_tutorial2124.
+            No specific FAQ matches your query. Contact our coordinator directly on Telegram at @pr_tutor12, or visit our channel @prohometutor1 and group @prohometutor2.
           </div>
         ) : (
           filteredFAQs.map((item, idx) => {
@@ -172,20 +172,20 @@ export const FAQPage: React.FC = () => {
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <a
-            href="https://t.me/pro_tutorial21241"
+            href="https://t.me/prohometutor1"
             target="_blank"
             rel="noopener noreferrer"
             className="px-3.5 py-2 text-xs font-bold text-white bg-[#0D3B66] rounded-xl hover:bg-[#1E3A8A] transition-colors"
           >
-            Channel (@pro_tutorial21241)
+            Channel (@prohometutor1)
           </a>
           <a
-            href="https://t.me/pro_tutorial2124"
+            href="https://t.me/prohometutor2"
             target="_blank"
             rel="noopener noreferrer"
             className="px-3.5 py-2 text-xs font-bold text-slate-800 bg-[#06B6D4] rounded-xl hover:bg-[#0891b2] transition-colors"
           >
-            Group (@pro_tutorial2124)
+            Group (@prohometutor2)
           </a>
           <button
             onClick={() => setActiveRoute('contact')}

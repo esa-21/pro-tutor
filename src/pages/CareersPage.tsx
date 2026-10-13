@@ -84,12 +84,16 @@ export const CareersPage: React.FC = () => {
               </div>
             </div>
 
-            <button
-              onClick={() => setActiveRoute('tutor-register')}
-              className="px-5 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] rounded-xl transition-colors shrink-0 self-start md:self-auto"
+            <a
+              href="/tutor-register"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveRoute('tutor-register');
+              }}
+              className="px-5 py-2.5 text-xs font-bold text-white bg-[#0D3B66] hover:bg-[#1E3A8A] rounded-xl transition-colors shrink-0 self-start md:self-auto inline-block cursor-pointer"
             >
               Apply Online
-            </button>
+            </a>
           </div>
         ))}
       </div>

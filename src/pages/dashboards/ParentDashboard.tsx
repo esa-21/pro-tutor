@@ -353,8 +353,8 @@ export const ParentDashboard: React.FC = () => {
             </p>
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1">
               <p><strong>Telegram Support:</strong> @pr_tutor12</p>
-              <p><strong>Official Channel:</strong> @pro_tutorial21241</p>
-              <p><strong>Community Group:</strong> @pro_tutorial2124</p>
+              <p><strong>Official Channel:</strong> @prohometutor1</p>
+              <p><strong>Community Group:</strong> @prohometutor2</p>
               <p><strong>Office Hours:</strong> Mon–Sat 8:00 AM – 7:00 PM</p>
             </div>
           </div>

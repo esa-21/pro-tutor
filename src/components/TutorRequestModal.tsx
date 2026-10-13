@@ -130,22 +130,22 @@ export const TutorRequestModal: React.FC = () => {
                 Done
               </button>
               <a
-                href="https://t.me/pro_tutorial21241"
+                href="https://t.me/prohometutor1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-bold text-[#0D3B66] bg-cyan-50 hover:bg-cyan-100 rounded-xl transition-colors border border-cyan-200"
               >
                 <Send className="w-3.5 h-3.5 text-[#06B6D4]" />
-                <span>Channel (@pro_tutorial21241)</span>
+                <span>Channel (@prohometutor1)</span>
               </a>
               <a
-                href="https://t.me/pro_tutorial2124"
+                href="https://t.me/prohometutor2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors border border-slate-200"
               >
                 <Send className="w-3.5 h-3.5 text-[#06B6D4]" />
-                <span>Group (@pro_tutorial2124)</span>
+                <span>Group (@prohometutor2)</span>
               </a>
             </div>
           </div>

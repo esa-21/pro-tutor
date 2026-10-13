@@ -266,19 +266,27 @@ export const Header: React.FC = () => {
       </div>
           ) : (
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleNav('login')}
+              <a
+                href="/login"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav('login');
+                }}
                 className="hidden sm:inline-flex px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#0D3B66] transition-colors"
               >
                 {t('navLogin')}
-              </button>
+              </a>
               {/* Tomato / Coral CTA Button */}
-              <button
-                onClick={() => handleNav('find-tutor')}
-                className="px-4 py-2.5 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl shadow-md shadow-[#F25C54]/20 transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap cursor-pointer"
+              <a
+                href="/find-tutor"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav('find-tutor');
+                }}
+                className="px-4 py-2.5 text-xs font-bold text-white bg-[#F25C54] hover:bg-[#e04a42] rounded-xl shadow-md shadow-[#F25C54]/20 transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap cursor-pointer inline-flex items-center"
               >
                 {t('findTutorCTA')}
-              </button>
+              </a>
             </div>
           )}
 

@@ -76,12 +76,19 @@ const AppContent: React.FC = () => {
         return <LegalPages initialTab={activeRoute} />;
       case 'login':
         return <LoginPage />;
+      case 'register':
       case 'student-register':
         return <RegisterPage initialRole="student" />;
       case 'parent-register':
         return <RegisterPage initialRole="parent" />;
       case 'tutor-register':
         return <RegisterPage initialRole="tutor" />;
+      case 'student-dashboard':
+        return <StudentDashboard />;
+      case 'parent-dashboard':
+        return <ParentDashboard />;
+      case 'tutor-dashboard':
+        return <TutorDashboard />;
       case 'admin-dashboard':
         return <AdminDashboard />;
       case 'dashboard':

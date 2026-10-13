@@ -8,7 +8,11 @@ export const CANONICAL_DOMAIN = 'https://pro-tutor-virid.vercel.app';
 
 export const PRIVATE_ROUTES = new Set([
   'login',
+  'register',
   'dashboard',
+  'student-dashboard',
+  'parent-dashboard',
+  'tutor-dashboard',
   'admin-dashboard',
   'student-register',
   'parent-register',
@@ -125,6 +129,12 @@ export const ROUTE_SEO: Record<string, RouteSEO> = {
       'Sign in to your student, parent, tutor, or admin account on Pro Tutorial Service Ethiopia to manage sessions, requests, and schedules.',
     canonicalPath: '/login',
   },
+  register: {
+    title: 'Account Registration | Pro Tutorial Service Ethiopia',
+    description:
+      'Register for Pro Tutorial Service in Ethiopia as a student, parent, or tutor to connect with verified home and online educators.',
+    canonicalPath: '/register',
+  },
   'student-register': {
     title: 'Student Registration | Find Private Tutors | Pro Tutorial Service',
     description:
@@ -148,6 +158,21 @@ export const ROUTE_SEO: Record<string, RouteSEO> = {
     description:
       'Access your personal dashboard to view tutoring requests, match status, learning schedules, and direct tutor communication.',
     canonicalPath: '/dashboard',
+  },
+  'student-dashboard': {
+    title: 'Student Dashboard | Pro Tutorial Service Ethiopia',
+    description: 'Track tutoring sessions, goals, and academic progress on Pro Tutorial Service.',
+    canonicalPath: '/student-dashboard',
+  },
+  'parent-dashboard': {
+    title: 'Parent Portal & Child Progress | Pro Tutorial Service Ethiopia',
+    description: 'Manage children tutoring schedules, requests, and verified educator proposals.',
+    canonicalPath: '/parent-dashboard',
+  },
+  'tutor-dashboard': {
+    title: 'Tutor Educator Portal | Pro Tutorial Service Ethiopia',
+    description: 'Manage tutoring requests, scheduled sessions, and student feedback on Pro Tutorial Service.',
+    canonicalPath: '/tutor-dashboard',
   },
   'admin-dashboard': {
     title: 'Admin Management Console | Pro Tutorial Service Ethiopia',

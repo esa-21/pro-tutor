@@ -74,23 +74,23 @@ export const ContactPage: React.FC = () => {
                 <p className="text-slate-200 text-xs">
                   Official Channel:{' '}
                   <a
-                    href="https://t.me/pro_tutorial21241"
+                    href="https://t.me/prohometutor1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#06B6D4] font-bold underline hover:text-white"
                   >
-                    @pro_tutorial21241
+                    @prohometutor1
                   </a>
                 </p>
                 <p className="text-slate-200 text-xs">
                   Telegram Group:{' '}
                   <a
-                    href="https://t.me/pro_tutorial2124"
+                    href="https://t.me/prohometutor2"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#06B6D4] font-bold underline hover:text-white"
                   >
-                    @pro_tutorial2124
+                    @prohometutor2
                   </a>
                 </p>
                 <p className="text-slate-200 text-xs">
@@ -140,20 +140,20 @@ export const ContactPage: React.FC = () => {
 
           <div className="pt-4 border-t border-white/15 flex flex-wrap gap-2.5">
             <a
-              href="https://t.me/pro_tutorial21241"
+              href="https://t.me/prohometutor1"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 min-w-[130px] py-2.5 rounded-xl bg-[#06B6D4] text-slate-950 font-bold text-xs text-center hover:bg-[#0891b2] transition-colors"
             >
-              Channel (@pro_tutorial21241)
+              Channel (@prohometutor1)
             </a>
             <a
-              href="https://t.me/pro_tutorial2124"
+              href="https://t.me/prohometutor2"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 min-w-[130px] py-2.5 rounded-xl bg-white/20 text-white font-bold text-xs text-center hover:bg-white/30 transition-colors"
             >
-              Group (@pro_tutorial2124)
+              Group (@prohometutor2)
             </a>
             <a
               href="https://t.me/pr_tutor12"

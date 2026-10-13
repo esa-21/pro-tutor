@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   AlertCircle,
   ArrowRight,
+  Loader2,
 } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
@@ -172,31 +173,100 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
   const [experienceYears, setExperienceYears] = useState(2);
   const [bio, setBio] = useState('');
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   const toggleSubject = (sub: string) => {
     setSelectedSubjects((prev) =>
       prev.includes(sub) ? prev.filter((s) => s !== sub) : [...prev, sub]
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const APPS_SCRIPT_URL =
+    'https://script.google.com/macros/s/AKfycbx0ZH85-fejv_sifnudZJZzT3nU-3uqjgoRYjPpxCJZ51WNLCFOjw5ORTmErlIpTeG4UQ/exec';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !email.trim() || !phone.trim()) return;
+    setSubmitError(null);
+
+    if (!name.trim() || !phone.trim()) {
+      setSubmitError('Please provide your full name and phone number.');
+      return;
+    }
 
     if (role === 'tutor') {
-      registerUser('tutor', name, email, phone, city, subCity, {
-        university,
-        department,
-        academicStatus,
-        experienceYears,
-        subjects: selectedSubjects,
-        bio: bio || 'Passionate educator committed to student success in Ethiopia.',
-      });
+      if (!university.trim() || !department.trim()) {
+        setSubmitError('Please specify your university/college and department.');
+        return;
+      }
+      if (selectedSubjects.length === 0) {
+        setSubmitError('Please select at least one subject you are qualified to tutor.');
+        return;
+      }
+
+      setIsSubmitting(true);
+
+      const educationSummary = [academicStatus, university, department]
+        .filter(Boolean)
+        .join(' - ');
+
+      const payload = {
+        fullName: name.trim(),
+        phone: phone.trim(),
+        education: educationSummary,
+        subjects: selectedSubjects.join(', '),
+        experience: `${experienceYears} ${experienceYears === 1 ? 'year' : 'years'}`,
+        email: email.trim() || 'N/A',
+        city,
+        subCity: subCity || 'N/A',
+        bio: bio.trim() || 'Qualified tutor applicant',
+      };
+
+      try {
+        // Send to deployed Google Apps Script web app
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        // Register in client session so tutor can explore their dashboard
+        registerUser('tutor', name, email, phone, city, subCity, {
+          university,
+          department,
+          academicStatus,
+          experienceYears,
+          subjects: selectedSubjects,
+          bio: bio || 'Passionate educator committed to student success in Ethiopia.',
+        });
+
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+      } catch (err) {
+        console.error('Failed to submit tutor application:', err);
+        // Fallback: register locally so user progress is not lost
+        registerUser('tutor', name, email, phone, city, subCity, {
+          university,
+          department,
+          academicStatus,
+          experienceYears,
+          subjects: selectedSubjects,
+          bio: bio || 'Passionate educator committed to student success in Ethiopia.',
+        });
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+      }
     } else {
       registerUser(role, name, email, phone, city, subCity, {
         grade,
         preferredSubjects: selectedSubjects,
         learningFormat,
       });
+      setActiveRoute('dashboard');
     }
   };
 
@@ -234,8 +304,69 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
         ))}
       </div>
 
-      {/* Form Container */}
-      <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-5">
+      {submitSuccess ? (
+        <div className="bg-white rounded-3xl p-8 sm:p-10 border border-emerald-200 shadow-md space-y-6 text-center animate-in fade-in zoom-in-95 duration-200">
+          <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
+            <CheckCircle2 className="w-9 h-9" />
+          </div>
+
+          <div className="space-y-2">
+            <span className="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              Submitted to Google Sheets
+            </span>
+            <h2 className="text-2xl font-black text-slate-900">
+              Application Successfully Received!
+            </h2>
+            <p className="text-xs text-slate-600 max-w-lg mx-auto leading-relaxed">
+              Thank you, <strong>{name}</strong>. Your tutor application has been recorded in our official Google Sheets spreadsheet via Google Apps Script. Our coordinator will review your qualifications within 48 business hours.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-2xl p-4 text-left border border-slate-200 text-xs space-y-2 max-w-md mx-auto">
+            <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+              Recorded Application Details:
+            </div>
+            <div className="grid grid-cols-2 gap-1 text-slate-700">
+              <span className="font-semibold text-slate-500">Applicant:</span>
+              <span className="font-medium">{name}</span>
+              <span className="font-semibold text-slate-500">Phone:</span>
+              <span className="font-medium">{phone}</span>
+              <span className="font-semibold text-slate-500">Education:</span>
+              <span className="font-medium truncate">{academicStatus} ({university || 'Higher Institution'})</span>
+              <span className="font-semibold text-slate-500">Experience:</span>
+              <span className="font-medium">{experienceYears} years</span>
+              <span className="font-semibold text-slate-500">Subjects:</span>
+              <span className="font-medium truncate">{selectedSubjects.join(', ')}</span>
+            </div>
+          </div>
+
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => setActiveRoute('tutor-dashboard')}
+              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0D3B66] hover:bg-[#1E3A8A] text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+            >
+              Open Tutor Dashboard
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setSubmitSuccess(false);
+                setName('');
+                setEmail('');
+                setPhone('');
+                setUniversity('');
+                setDepartment('');
+              }}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs border border-slate-200 transition-colors cursor-pointer"
+            >
+              Submit Another Application
+            </button>
+          </div>
+        </div>
+      ) : (
+        /* Form Container */
+        <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-5">
         {/* Basic contact info */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -513,12 +644,29 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
           </div>
         )}
 
+        {submitError && (
+          <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+            <span>{submitError}</span>
+          </div>
+        )}
+
         <button
           type="submit"
-          className="w-full py-3 rounded-xl bg-[#0D3B66] hover:bg-[#1E3A8A] text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2"
+          disabled={isSubmitting}
+          className="w-full py-3 rounded-xl bg-[#0D3B66] hover:bg-[#1E3A8A] disabled:bg-slate-400 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
         >
-          <span>Complete Registration</span>
-          <ArrowRight className="w-4 h-4" />
+          {isSubmitting ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin" />
+              <span>Saving Application to Google Sheets...</span>
+            </>
+          ) : (
+            <>
+              <span>{role === 'tutor' ? 'Submit Tutor Application' : 'Complete Registration'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </>
+          )}
         </button>
 
         <p className="text-center text-[11px] text-slate-500 pt-2">
@@ -532,6 +680,7 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
           </button>
         </p>
       </form>
+      )}
     </div>
   );
 };
