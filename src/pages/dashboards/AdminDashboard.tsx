@@ -15,7 +15,9 @@ import {
   Search,
   ArrowRight,
   Filter,
+  Database,
 } from 'lucide-react';
+import { isSupabaseConfigured } from '../../services/supabaseService';
 
 export const AdminDashboard: React.FC = () => {
   const {
@@ -72,13 +74,24 @@ export const AdminDashboard: React.FC = () => {
       {/* Header */}
       <div className="bg-gradient-to-r from-[#0D3B66] via-blue-900 to-[#0F2A4A] text-white rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl">
         <div className="space-y-1">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold text-[#06B6D4] uppercase tracking-wider">
-              Administration & Operations
+              Administration &amp; Operations
             </span>
             <span className="bg-[#06B6D4]/20 text-[#06B6D4] text-[10px] font-bold px-2 py-0.5 rounded-full border border-[#06B6D4]/40">
               Super Admin
             </span>
+            {isSupabaseConfigured() ? (
+              <span className="bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>Supabase Live</span>
+              </span>
+            ) : (
+              <span className="bg-amber-500/20 text-amber-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-amber-500/30 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                <span>Local Session (Pending VITE_SUPABASE_ANON_KEY)</span>
+              </span>
+            )}
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
             Central Management System
