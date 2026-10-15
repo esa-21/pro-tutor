@@ -36,6 +36,10 @@ import {
   updateTutorVerificationInDb,
   createTutorMatchInDb,
   submitStudentRequestToDb,
+  getSupabaseSessionUser,
+  signOutWithSupabase,
+  checkSupabaseHealth,
+  SupabaseHealth,
 } from '../services/supabaseService';
 
 interface AppContextType {
@@ -64,6 +68,10 @@ interface AppContextType {
   prefilledRequestData: Partial<TutorRequest> | null;
   setPrefilledRequestData: (data: Partial<TutorRequest> | null) => void;
   
+  // Supabase Live Health
+  supabaseHealth: SupabaseHealth | null;
+  refreshSupabaseHealth: () => Promise<void>;
+
   // Auth
   loginAs: (user: User) => void;
   loginWithEmail: (email: string, role?: UserRole) => boolean;

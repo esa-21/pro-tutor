@@ -193,7 +193,7 @@ BEGIN
       academic_status,
       experience_years,
       subjects,
-      city,
+      cities,
       sub_cities,
       bio,
       verification_status
@@ -205,8 +205,12 @@ BEGIN
       COALESCE(NEW.raw_user_meta_data->>'university', 'Higher Education Institution'),
       COALESCE(NEW.raw_user_meta_data->>'department', 'General Education'),
       COALESCE(NEW.raw_user_meta_data->>'academic_status', 'Graduate'),
-      COALESCE((NEW.raw_user_meta_data->>'experience_years')::INT, 1),
-      COALESCE(ARRAY[NEW.raw_user_meta_data->>'subjects'], ARRAY['Mathematics']),
+      COALESCE(NULLIF(NEW.raw_user_meta_data->>'experience_years', '')::INT, 1),
+      CASE
+        WHEN NEW.raw_user_meta_data->>'subjects' IS NOT NULL AND NEW.raw_user_meta_data->>'subjects' != ''
+        THEN string_to_array(NEW.raw_user_meta_data->>'subjects', ', ')
+        ELSE ARRAY['Mathematics']
+      END,
       ARRAY[COALESCE(NEW.raw_user_meta_data->>'city', 'Addis Ababa')],
       ARRAY[COALESCE(NEW.raw_user_meta_data->>'sub_city', 'Bole')],
       COALESCE(NEW.raw_user_meta_data->>'bio', 'Passionate educator committed to Ethiopian students.'),

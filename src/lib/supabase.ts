@@ -1,19 +1,67 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-// Environment variables for Supabase
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://bjkhtjcyxqoizrzcupfx.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+// Intelligent environment variable resolution for Supabase
+export function resolveSupabaseConfig() {
+  const envUrl =
+    (import.meta.env.VITE_SUPABASE_URL as string | undefined) ||
+    'https://bjkhtjcyxqoizrzcupfx.supabase.co';
+
+  const envKey =
+    (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined) ||
+    (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined) ||
+    '';
+
+  let finalUrl = (envUrl || '').trim();
+  let finalKey = (envKey || '').trim();
+  let wasSwapped = false;
+
+  // If the user entered the publishable key into the URL field
+  // and the project URL into the Key field, automatically detect and un-swap them!
+  if (
+    (finalUrl.startsWith('sb_') || finalUrl.startsWith('eyJ') || !finalUrl.startsWith('http')) &&
+    finalKey.startsWith('http')
+  ) {
+    const temp = finalUrl;
+    finalUrl = finalKey;
+    finalKey = temp;
+    wasSwapped = true;
+  }
+
+  // Ensure URL is a valid Supabase endpoint
+  if (!finalUrl || !finalUrl.startsWith('http')) {
+    finalUrl = 'https://bjkhtjcyxqoizrzcupfx.supabase.co';
+  }
+
+  const isValidKey = Boolean(
+    finalKey &&
+    finalKey !== 'YOUR_SUPABASE_ANON_KEY' &&
+    finalKey !== 'placeholder-anon-key-configure-in-env'
+  );
+
+  return {
+    url: finalUrl,
+    key: finalKey,
+    isValidKey,
+    wasSwapped,
+  };
+}
+
+const resolvedConfig = resolveSupabaseConfig();
+export const supabaseUrl = resolvedConfig.url;
+export const supabaseAnonKey = resolvedConfig.key;
 
 /**
  * Checks whether Supabase is configured with a valid URL and publishable/anon key.
  */
 export const isSupabaseConfigured = (): boolean => {
-  return Boolean(supabaseUrl && supabaseAnonKey && supabaseAnonKey !== 'YOUR_SUPABASE_ANON_KEY');
+  return resolvedConfig.isValidKey;
 };
+
+export const getSupabaseConfig = () => resolvedConfig;
 
 /**
  * Official Supabase client instance.
- * If credentials are not yet provided in the environment, a mock-safe client is created.
+ * Automatically configured with session persistence and auto token refresh.
  */
 export const supabase: SupabaseClient = createClient(
   supabaseUrl,
