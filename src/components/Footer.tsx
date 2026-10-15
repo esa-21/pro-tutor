@@ -199,6 +199,42 @@ export const Footer: React.FC = () => {
                   Become a Tutor
                 </a>
               </li>
+              <li>
+                <a
+                  href="/student-register"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('student-register');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
+                  Student Registration
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/parent-register"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('parent-register');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
+                  Parent Registration
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/tutor-register"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveRoute('tutor-register');
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer block"
+                >
+                  Tutor Application Form
+                </a>
+              </li>
             </ul>
           </div>
 

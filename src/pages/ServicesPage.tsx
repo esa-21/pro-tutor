@@ -32,10 +32,10 @@ export const ServicesPage: React.FC = () => {
           Educational Programs
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Comprehensive Tutoring Services for KG–Grade 12 in Ethiopia
+          KG to Grade 12 Tutoring Services in Ethiopia | Pro Home Tutor
         </h1>
         <p className="text-sm text-slate-600 leading-relaxed">
-          In-home and online private tutoring across Addis Ababa and regional cities, covering KG through Grade 12 subjects, Grade 8 Ministry Exam, and Grade 12 National University Entrance Exam prep.
+          In-home home tutors in Addis Ababa and online private tutoring across Ethiopia, covering KG through Grade 12 subjects, Grade 8 Ministry Exam, and Grade 12 National University Entrance Exam prep.
         </p>
       </div>
 

@@ -2,112 +2,138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Core Public Marketplace & Discovery -->
+  <!-- Core Marketplace & Service Discovery -->
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/find-tutor</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/find-tutor</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/services</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/services</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/pricing</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/pricing</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Informational & Process Pages -->
+  <!-- Registration & Application Landing Pages -->
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/how-it-works</loc>
-    <lastmod>2026-10-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://pro-tutor-virid.vercel.app/about</loc>
-    <lastmod>2026-10-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://pro-tutor-virid.vercel.app/become-tutor</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/become-tutor</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/faq</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/tutor-register</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://prohometutor.vercel.app/student-register</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://prohometutor.vercel.app/parent-register</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://prohometutor.vercel.app/register</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Informational, How It Works & About -->
+  <url>
+    <loc>https://prohometutor.vercel.app/how-it-works</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/contact</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/about</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prohometutor.vercel.app/faq</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://prohometutor.vercel.app/contact</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Social Proof & Educational Resources -->
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/testimonials</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/testimonials</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/learning-tips</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/learning-tips</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/blog</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/blog</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/careers</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/careers</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <!-- Legal & Support Pages -->
+  <!-- Legal & Support Center -->
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/privacy</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/privacy</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/terms</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/terms</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/refund</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/refund</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pro-tutor-virid.vercel.app/help</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://prohometutor.vercel.app/help</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

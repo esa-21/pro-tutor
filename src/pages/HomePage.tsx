@@ -66,7 +66,7 @@ export const HomePage: React.FC = () => {
 
               {/* Headline with Yellow Highlights */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
-                Pro Tutorial Service | Home &amp; Online Tutors in Ethiopia for{' '}
+                Pro Home Tutor Ethiopia | Home &amp; Online Tutors for{' '}
                 <span className="text-[#F4B400] underline decoration-[#F4B400]/40 decoration-wavy decoration-2">
                   KG–Grade 12
                 </span>
@@ -74,11 +74,11 @@ export const HomePage: React.FC = () => {
 
               {/* Supporting Text */}
               <p className="text-base sm:text-lg text-blue-100/90 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                Connecting families and students with qualified, vetted private tutors for in-home tutoring in Addis Ababa and online tutoring nationwide across Ethiopia.
+                Connecting families and students with verified, qualified private tutors for in-home tutoring in Addis Ababa and interactive online tutoring across Ethiopia.
               </p>
 
               <p className="text-xs sm:text-sm text-blue-200/80 max-w-xl mx-auto lg:mx-0">
-                Personalized one-on-one academic guidance for school subjects, Grade 8 Regional Ministry Exams, and Grade 12 National University Entrance Examinations.
+                Personalized 1-on-1 academic guidance for school subjects, Grade 8 Regional Ministry Exams, and Grade 12 National University Entrance Examinations.
               </p>
 
               {/* CTAs: Tomato primary CTA + Bright secondary CTA */}
@@ -92,7 +92,7 @@ export const HomePage: React.FC = () => {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#F25C54] hover:bg-[#e04a42] text-white font-bold text-sm shadow-xl shadow-[#F25C54]/25 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                 >
                   <Compass className="w-4 h-4 text-white" />
-                  <span>{t('findTutorCTA')}</span>
+                  <span>Find a Home Tutor Near Me</span>
                   <ArrowRight className="w-4 h-4 text-white" />
                 </a>
 
@@ -111,7 +111,7 @@ export const HomePage: React.FC = () => {
                   }}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 text-xs font-semibold text-[#F4B400] hover:text-white transition-colors cursor-pointer"
                 >
-                  <span>{t('becomeTutorCTA')} →</span>
+                  <span>Become a Tutor in Ethiopia →</span>
                 </a>
               </div>
 
@@ -659,7 +659,13 @@ export const HomePage: React.FC = () => {
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5" />
                 <span>
-                  <strong>Addis Ababa Sub-Cities Covered:</strong> Bole, Yeka, Arada, Kirkos, Lideta, Nifas Silk-Lafto, Gulele, Kolfe Keranio, Akaki Kality, and Addis Ketema.
+                  <strong>Addis Ababa Neighborhoods &amp; Sub-Cities:</strong> Bole, CMC, Sarbet, Kazanchis, Lebu, Ayat, Megenagna, Piassa, Bethel, Summit, Gerji, Yeka, Nifas Silk-Lafto, Kirkos, Arada, Gullele, and Akaki Kality.
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5" />
+                <span>
+                  <strong>Find a Home Tutor Near Me:</strong> Get matched with an educator located right in your neighborhood to minimize commute delays and ensure consistent weekly sessions.
                 </span>
               </div>
               <div className="flex items-start gap-2">
@@ -950,24 +956,36 @@ export const HomePage: React.FC = () => {
             </p>
 
             <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
-              <button
-                onClick={() => setInteractiveFinderOpen(true)}
+              <a
+                href="/find-tutor"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveRoute('find-tutor');
+                }}
                 className="px-6 py-3.5 rounded-xl bg-[#F25C54] hover:bg-[#e04a42] text-white font-bold text-xs shadow-lg shadow-[#F25C54]/25 transition-all hover:scale-[1.02] cursor-pointer"
               >
-                Find a Tutor
-              </button>
-              <button
-                onClick={() => setActiveRoute('become-tutor')}
+                Find a Tutor Near Me
+              </a>
+              <a
+                href="/become-tutor"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveRoute('become-tutor');
+                }}
                 className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-colors cursor-pointer"
               >
-                Apply as a Tutor
-              </button>
-              <button
-                onClick={() => setActiveRoute('contact')}
+                Apply as a Tutor in Ethiopia
+              </a>
+              <a
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveRoute('contact');
+                }}
                 className="px-6 py-3.5 rounded-xl bg-white text-[#0D3B66] font-bold text-xs hover:bg-slate-100 transition-colors cursor-pointer"
               >
-                Contact Us
-              </button>
+                Contact Coordinators
+              </a>
             </div>
           </div>
         </div>

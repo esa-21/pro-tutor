@@ -23,10 +23,10 @@ export const HowItWorksPage: React.FC = () => {
           Simple, Transparent Process
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          How Pro Tutorial Service Works: 4-Step Tutor Matching in Ethiopia
+          How to Hire a Home Tutor in Ethiopia: Simple 4-Step Process | Pro Home Tutor
         </h1>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Whether you are a parent seeking in-home tutoring in Addis Ababa or an educator applying to teach, our process is designed for clarity, safety, and mutual success.
+          Whether you are a parent seeking an in-home tutor in Addis Ababa or online private tutoring across Ethiopia, our 4-step matching process is designed for clarity, safety, and academic success.
         </p>
       </div>
 

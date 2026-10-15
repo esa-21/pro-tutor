@@ -22,10 +22,10 @@ export const AboutPage: React.FC = () => {
           About Us
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          About Pro Tutorial Service: Dedicated Tutoring Network in Ethiopia
+          About Pro Home Tutor Ethiopia | Trusted Private Tutoring Network
         </h1>
         <p className="text-sm text-slate-600 leading-relaxed">
-          &quot;Your Success, Our Commitment.&quot; / &quot;ለትምህርትዎ ስኬት፣ የእኛ ቁርጠኝነት!&quot;
+          &quot;Your Success, Our Commitment.&quot; · &quot;ለትምህርትዎ ስኬት፣ የእኛ ቁርጠኝነት!&quot; — Connecting Ethiopian students and families with vetted educators for in-home tutoring in Addis Ababa and online lessons nationwide.
         </p>
       </div>
 

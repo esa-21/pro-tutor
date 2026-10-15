@@ -16,16 +16,39 @@ import {
   Loader2,
 } from 'lucide-react';
 
+import {
+  signInWithSupabase,
+  signUpWithSupabase,
+  isSupabaseConfigured,
+} from '../services/supabaseService';
+
 export const LoginPage: React.FC = () => {
   const { loginWithEmail, loginAs, users, setActiveRoute } = useApp();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
+    setError('');
+
+    if (isSupabaseConfigured()) {
+      setIsSubmitting(true);
+      const res = await signInWithSupabase(email, password);
+      setIsSubmitting(false);
+      if (res.error) {
+        setError(res.error);
+        return;
+      }
+      if (res.user) {
+        loginAs(res.user);
+        return;
+      }
+    }
+
     const ok = loginWithEmail(email);
     if (!ok) {
       setError('Invalid login details.');
@@ -177,6 +200,36 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
+  React.useEffect(() => {
+    if (initialRole) {
+      setRole(initialRole);
+    }
+  }, [initialRole]);
+
+  const getHeadingInfo = () => {
+    if (role === 'tutor') {
+      return {
+        title: 'Tutor Registration Form | Join Pro Home Tutor Ethiopia',
+        subtitle:
+          'Apply to become a verified private tutor in Addis Ababa and Ethiopian regional cities. Share your education and qualifications to start receiving student matches.',
+      };
+    }
+    if (role === 'parent') {
+      return {
+        title: 'Parent Registration | Hire Qualified Home Tutors in Addis Ababa',
+        subtitle:
+          'Register your family to request vetted one-on-one private educators for in-home tutoring in your Addis Ababa neighborhood or online across Ethiopia.',
+      };
+    }
+    return {
+      title: 'Student Registration | Find a Home Tutor in Ethiopia',
+      subtitle:
+        'Register as a student to connect with experienced private tutors in Addis Ababa and online tutors across Ethiopia for KG to Grade 12 subjects.',
+    };
+  };
+
+  const headingInfo = getHeadingInfo();
+
   const toggleSubject = (sub: string) => {
     setSelectedSubjects((prev) =>
       prev.includes(sub) ? prev.filter((s) => s !== sub) : [...prev, sub]
@@ -224,7 +277,7 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
       };
 
       try {
-        // Send to deployed Google Apps Script web app
+        // 1. Post to Google Apps Script (Google Sheets persistence)
         await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
@@ -234,7 +287,30 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
           body: JSON.stringify(payload),
         });
 
-        // Register in client session so tutor can explore their dashboard
+        // 2. If Supabase is configured, also persist to Supabase Auth & Database
+        if (isSupabaseConfigured() && email.trim()) {
+          const authRes = await signUpWithSupabase({
+            email: email.trim(),
+            fullName: name.trim(),
+            phone: phone.trim(),
+            role: 'tutor',
+            city,
+            subCity,
+            tutorDetails: {
+              university,
+              department,
+              academicStatus,
+              experienceYears,
+              subjects: selectedSubjects,
+              bio: bio.trim(),
+            },
+          });
+          if (authRes.error) {
+            console.warn('Supabase tutor signup notice:', authRes.error);
+          }
+        }
+
+        // Register in client session
         registerUser('tutor', name, email, phone, city, subCity, {
           university,
           department,
@@ -248,7 +324,6 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
         setSubmitSuccess(true);
       } catch (err) {
         console.error('Failed to submit tutor application:', err);
-        // Fallback: register locally so user progress is not lost
         registerUser('tutor', name, email, phone, city, subCity, {
           university,
           department,
@@ -261,11 +336,29 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
         setSubmitSuccess(true);
       }
     } else {
+      setIsSubmitting(true);
+      if (isSupabaseConfigured() && email.trim()) {
+        const authRes = await signUpWithSupabase({
+          email: email.trim(),
+          fullName: name.trim(),
+          phone: phone.trim(),
+          role,
+          city,
+          subCity,
+        });
+        if (authRes.error) {
+          setIsSubmitting(false);
+          setSubmitError(authRes.error);
+          return;
+        }
+      }
+
       registerUser(role, name, email, phone, city, subCity, {
         grade,
         preferredSubjects: selectedSubjects,
         learningFormat,
       });
+      setIsSubmitting(false);
       setActiveRoute('dashboard');
     }
   };
@@ -275,10 +368,10 @@ export const RegisterPage: React.FC<{ initialRole?: 'student' | 'parent' | 'tuto
       {/* Heading */}
       <div className="text-center space-y-2">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          Create Your Pro Tutorial Service Account
+          {headingInfo.title}
         </h1>
-        <p className="text-xs text-slate-500">
-          Join our network of students, families, and certified educators in Ethiopia.
+        <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
+          {headingInfo.subtitle}
         </p>
       </div>
 

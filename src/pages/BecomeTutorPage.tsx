@@ -20,13 +20,13 @@ export const BecomeTutorPage: React.FC = () => {
       <div className="bg-gradient-to-r from-[#0D3B66] via-blue-900 to-[#0A2540] text-white rounded-3xl p-8 sm:p-14 relative overflow-hidden shadow-xl">
         <div className="max-w-2xl space-y-5 relative z-10">
           <span className="text-xs font-bold uppercase tracking-wider text-[#06B6D4]">
-            Educator Recruitment
+            Educator Recruitment in Ethiopia
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-            Share Your Knowledge. Inspire Ethiopian Learners.
+            Become a Home &amp; Online Tutor in Ethiopia | Pro Home Tutor
           </h1>
           <p className="text-xs sm:text-sm text-blue-100/90 leading-relaxed">
-            Join Ethiopia’s most respected tutoring network. Connect with motivated students in Addis Ababa and regional cities, earn competitive hourly compensation, and build your professional teaching portfolio.
+            Join Ethiopia’s leading private tutoring network. Connect with motivated KG–Grade 12 students across Addis Ababa and regional cities, earn competitive hourly compensation, and inspire the next generation of Ethiopian achievers.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-3">

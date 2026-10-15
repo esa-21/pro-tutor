@@ -30,6 +30,13 @@ import {
   INITIAL_CONTACT_MESSAGES,
 } from '../data/mockData';
 import { translations } from '../translations';
+import {
+  isSupabaseConfigured,
+  fetchApprovedTutorsFromDb,
+  updateTutorVerificationInDb,
+  createTutorMatchInDb,
+  submitStudentRequestToDb,
+} from '../services/supabaseService';
 
 interface AppContextType {
   currentUser: User | null;
@@ -334,6 +341,21 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  // Fetch approved tutors from Supabase database when configured
+  useEffect(() => {
+    if (isSupabaseConfigured()) {
+      fetchApprovedTutorsFromDb().then((dbTutors) => {
+        if (dbTutors && dbTutors.length > 0) {
+          setTutors((prev) => {
+            const existingIds = new Set(prev.map((t) => t.id));
+            const fresh = dbTutors.filter((t) => !existingIds.has(t.id));
+            return [...prev, ...fresh];
+          });
+        }
+      }).catch(console.error);
+    }
+  }, []);
+
   const setLanguage = (lang: Language) => setLanguageState(lang);
   const setActiveRoute = (route: string) => {
     setActiveRouteState(route);
@@ -544,6 +566,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       );
     }
 
+    if (isSupabaseConfigured()) {
+      submitStudentRequestToDb(data).catch(console.error);
+    }
+
     return newReq;
   };
 
@@ -582,6 +608,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
           : r
       )
     );
+
+    if (isSupabaseConfigured()) {
+      createTutorMatchInDb(requestId, tutorId, currentUser?.id).catch(console.error);
+    }
 
     const targetReq = requests.find((r) => r.id === requestId);
     if (targetReq && targetReq.requesterId) {
@@ -663,6 +693,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         t.id === tutorId ? { ...t, verificationStatus: 'approved' } : t
       )
     );
+
+    if (isSupabaseConfigured()) {
+      updateTutorVerificationInDb(tutorId, 'approved').catch(console.error);
+    }
+
     const tutor = tutors.find((t) => t.id === tutorId);
     if (tutor && tutor.userId) {
       notifyUser(
@@ -681,6 +716,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         t.id === tutorId ? { ...t, verificationStatus: 'rejected' } : t
       )
     );
+
+    if (isSupabaseConfigured()) {
+      updateTutorVerificationInDb(tutorId, 'rejected').catch(console.error);
+    }
+
     const tutor = tutors.find((t) => t.id === tutorId);
     if (tutor && tutor.userId) {
       notifyUser(

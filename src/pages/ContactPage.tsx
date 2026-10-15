@@ -44,10 +44,10 @@ export const ContactPage: React.FC = () => {
           Customer Support & Inquiries
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          We’re Here to Help Your Child Succeed
+          Contact Pro Home Tutor | Addis Ababa Tutoring Coordinators
         </h1>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Contact our team in Addis Ababa for tutor consultations, callback requests, or agency partnerships.
+          Get in touch with our tutoring coordinators in Addis Ababa for in-home tutor requests, online tutoring inquiries across Ethiopia, or tutor recruitment questions.
         </p>
       </div>
 
